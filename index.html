@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blind HR Slot Game</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col items-center justify-start p-6">
+  <div class="max-w-xl w-full bg-white rounded-xl shadow-xl p-6">
+    <h1 class="text-3xl font-bold text-center mb-4">🏏 Blind HR Slot Game</h1>
+    <div id="score" class="text-xl font-semibold text-center mb-4">Total Score: 0</div>
+    <div id="current-player" class="text-lg text-center mb-4">Loading...</div>
+    <div id="slot-list" class="flex flex-col gap-2 mb-4"></div>
+    <div id="button-container" class="grid grid-cols-3 gap-2 mb-6"></div>
+    <div id="end-message" class="text-center text-lg font-semibold mt-4"></div>
+    <button id="restart" onclick="startGame()" class="hidden mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mx-auto block">
+      🔁 Play Again
+    </button>
+    <div class="mt-6 text-center text-sm text-gray-500">
+      Like the game? <a href="https://www.buymeacoffee.com/yourname" target="_blank" class="text-blue-500 underline">Buy me a coffee ☕</a>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

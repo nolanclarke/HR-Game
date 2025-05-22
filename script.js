@@ -414,14 +414,12 @@ const slotList = document.getElementById("slot-list");
 const endMessage = document.getElementById("end-message");
 const restartBtn = document.getElementById("restart");
 
-
 function shuffle(arr) {
   return [...arr].sort(() => Math.random() - 0.5);
 }
 
 function assignSlot(index) {
   assigned[index] = playerPool[currentIndex];
-  document.getElementById(`slot-${index}`).innerText = `${playerPool[currentIndex].Player}`;
   currentIndex++;
   updateScore();
 
@@ -429,13 +427,52 @@ function assignSlot(index) {
     updatePlayer();
     renderSlots();
   } else {
-    showResults();
+    endGame();
   }
 }
 
 function updatePlayer() {
   const p = playerPool[currentIndex];
   playerEl.innerText = `Player ${currentIndex + 1} of 9: ${p.Player}`;
+  const imgEl = document.getElementById("current-player-img");
+  imgEl.src = p.img;
+  imgEl.classList.remove("hidden");
+}
+
+function renderSlots() {
+  slotList.innerHTML = "";
+  for (let i = 0; i < 9; i++) {
+    const row = document.createElement("div");
+    row.className = `flex justify-between items-center border border-dark-border rounded p-3 cursor-pointer transition-colors duration-150 text-[1.05rem] ${assigned[i] ? 'bg-dark-hover' : 'hover:bg-dark-hover'}`;
+    row.onclick = () => {
+      if (!assigned[i] && currentIndex < playerPool.length) assignSlot(i);
+    };
+
+    const label = document.createElement("span");
+    label.innerText = `x${MULTIPLIERS[i]}`;
+
+    const content = document.createElement("span");
+    content.id = `slot-${i}`;
+
+    if (assigned[i]) {
+      const text = document.createElement("span");
+      text.innerText = assigned[i].Player;
+
+      const img = document.createElement("img");
+      img.src = assigned[i].img;
+      img.alt = assigned[i].Player;
+      img.className = "w-6 h-6 rounded-full ml-2 inline-block align-middle";
+
+      content.appendChild(text);
+      content.appendChild(img);
+    } else {
+      content.innerText = "EMPTY";
+    }
+
+    row.appendChild(label);
+    row.appendChild(content);
+    slotList.appendChild(row);
+  }
 }
 
 function updateScore() {
@@ -446,146 +483,35 @@ function updateScore() {
   scoreEl.innerText = `Total Score: ${total}`;
 }
 
-function showResults() {
-  let total = 0;
-  endMessage.innerText = "🏁 Final Lineup:\n\n";
-  for (let i = 0; i < 9; i++) {
-    const player = assigned[i];
-    const score = player.HR * MULTIPLIERS[i];
-    total += score;
-    endMessage.innerText += `x${MULTIPLIERS[i]} – ${player.Player} (${player.HR} HRs) = ${score}\n`;
-  }
-  endMessage.innerText += `\n🎯 Final Score: ${total}\n`;
-  endMessage.innerText += total >= GOAL_SCORE ? "🎉 You Win!" : "❌ Try Again!";
+function endGame() {
+  document.getElementById("game-ui").style.display = "none";
   restartBtn.classList.remove("hidden");
-}
 
-function updatePlayer() {
-  const p = playerPool[currentIndex];
-  playerEl.innerText = `Player ${currentIndex + 1} of 9: ${p.Player}`;
-  const imgEl = document.getElementById("current-player-img");
-  imgEl.src = p.img;
-  imgEl.classList.remove("hidden");
-}
-
-function renderSlots() {
-  slotList.innerHTML = "";
+  let finalMsg = "🏁 Final Lineup:\n\n";
+  let total = 0;
   for (let i = 0; i < 9; i++) {
-    const row = document.createElement("div");
-    row.className = `flex justify-between items-center border border-dark-border rounded p-3 cursor-pointer transition-colors duration-150 text-[1.05rem] ${assigned[i] ? 'bg-dark-hover' : 'hover:bg-dark-hover'}`;
-    row.onclick = () => {
-      if (!assigned[i] && currentIndex < playerPool.length) assignSlot(i);
-    };
-
-    const label = document.createElement("span");
-    label.innerText = `x${MULTIPLIERS[i]}`;
-
-    const content = document.createElement("span");
-    content.id = `slot-${i}`;
-
-    if (assigned[i]) {
-      const text = document.createElement("span");
-      text.innerText = assigned[i].Player;
-
-      const img = document.createElement("img");
-      img.src = assigned[i].img;
-      img.alt = assigned[i].Player;
-      img.className = "w-6 h-6 rounded-full ml-2 inline-block align-middle";
-
-      content.appendChild(text);
-      content.appendChild(img);
-    } else {
-      content.innerText = "EMPTY";
-    }
-
-    row.appendChild(label);
-    row.appendChild(content);
-    slotList.appendChild(row);
+    const p = assigned[i];
+    const m = MULTIPLIERS[i];
+    finalMsg += `x${m} – ${p.Player} (${p.HR} HRs) = ${p.HR * m}\n`;
+    total += p.HR * m;
   }
-}
 
-function renderSlots() {
-  slotList.innerHTML = "";
-  for (let i = 0; i < 9; i++) {
-    const row = document.createElement("div");
-    row.className = `flex justify-between items-center border border-dark-border rounded p-3 cursor-pointer transition-colors duration-150 text-[1.05rem] ${assigned[i] ? 'bg-dark-hover' : 'hover:bg-dark-hover'}`;
-    row.onclick = () => {
-      if (!assigned[i] && currentIndex < playerPool.length) assignSlot(i);
-    };
-
-    const label = document.createElement("span");
-    label.innerText = `x${MULTIPLIERS[i]}`;
-
-    const content = document.createElement("span");
-    content.id = `slot-${i}`;
-
-    if (assigned[i]) {
-      const text = document.createElement("span");
-      text.innerText = assigned[i].Player;
-
-      const img = document.createElement("img");
-      img.src = assigned[i].img;
-      img.alt = assigned[i].Player;
-      img.className = "w-6 h-6 rounded-full ml-2 inline-block align-middle";
-
-      content.appendChild(text);
-      content.appendChild(img);
-    } else {
-      content.innerText = "EMPTY";
-    }
-
-    row.appendChild(label);
-    row.appendChild(content);
-    slotList.appendChild(row);
-  }
-}
-
-function updatePlayer() {
-  const p = playerPool[currentIndex];
-  playerEl.innerText = `Player ${currentIndex + 1} of 9: ${p.Player}`;
-  const imgEl = document.getElementById("current-player-img");
-  imgEl.src = p.img;
-  imgEl.classList.remove("hidden");
+  finalMsg += `\n🎯 Final Score: ${total}\n${total >= GOAL_SCORE ? "🎉 You Win!" : "❌ Try Again!"}`;
+  endMessage.innerText = finalMsg;
 }
 
 function startGame() {
   playerPool = shuffle(players).slice(0, 9);
   assigned = Array(9).fill(null);
   currentIndex = 0;
-  document.getElementById("end-message").innerText = "";
-  document.getElementById("restart").classList.add("hidden");
+
+  endMessage.innerText = "";
+  restartBtn.classList.add("hidden");
   document.getElementById("game-ui").style.display = "block";
+
   updatePlayer();
   renderSlots();
   updateScore();
-}
-
-function endGame() {
-  document.getElementById("game-ui").style.display = "none";
-  document.getElementById("restart").classList.remove("hidden");
-
-  let finalMsg = "🏁 Final Lineup:\n";
-  let total = 0;
-  for (let i = 0; i < 9; i++) {
-    const p = assigned[i];
-    const m = MULTIPLIERS[i];
-    const line = `x${m} – ${p.Player} (${p.HR} HRs) = ${p.HR * m}`;
-    total += p.HR * m;
-    finalMsg += line + "\n";
-  }
-
-  finalMsg += `\n🎯 Final Score: ${total}\n${total >= GOAL_SCORE ? "✅ You Win!" : "❌ Try Again!"}`;
-  document.getElementById("end-message").innerText = finalMsg;
-}
-
-function updateScore() {
-  let total = 0;
-  for (let i = 0; i < 9; i++) {
-    if (assigned[i]) {
-      total += assigned[i].HR * MULTIPLIERS[i];
-    }
-  }
-  document.getElementById("score").innerText = `Total Score: ${total}`;
 }
 
 startGame();

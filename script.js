@@ -453,7 +453,7 @@ function renderSlots() {
 
 function assignSlot(index) {
   assigned[index] = playerPool[currentIndex];
-  document.getElementById(`slot-${index}`).innerText = `✅ ${playerPool[currentIndex].Player}`;
+  document.getElementById(`slot-${index}`).innerText = `${playerPool[currentIndex].Player}`;
   currentIndex++;
   updateScore();
 
@@ -516,15 +516,15 @@ function renderSlots() {
     content.id = `slot-${i}`;
 
     if (assigned[i]) {
-      const container = document.createElement("span");
-      container.innerText = assigned[i].Player;
+      const text = document.createElement("span");
+      text.innerText = assigned[i].Player;
 
       const img = document.createElement("img");
       img.src = assigned[i].img;
       img.alt = assigned[i].Player;
       img.className = "w-6 h-6 rounded-full ml-2 inline-block align-middle";
 
-      content.appendChild(container);
+      content.appendChild(text);
       content.appendChild(img);
     } else {
       content.innerText = "EMPTY";

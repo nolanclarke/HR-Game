@@ -17,7 +17,6 @@ let assigned = Array(9).fill(null);
 const scoreEl = document.getElementById("score");
 const playerEl = document.getElementById("current-player");
 const slotList = document.getElementById("slot-list");
-const buttonContainer = document.getElementById("button-container");
 const endMessage = document.getElementById("end-message");
 const restartBtn = document.getElementById("restart");
 
@@ -27,9 +26,7 @@ function startGame() {
   assigned = Array(9).fill(null);
   endMessage.innerText = "";
   restartBtn.classList.add("hidden");
-
   renderSlots();
-  renderButtons();
   updateScore();
   updatePlayer();
 }
@@ -42,7 +39,10 @@ function renderSlots() {
   slotList.innerHTML = "";
   for (let i = 0; i < 9; i++) {
     const row = document.createElement("div");
-    row.className = "flex justify-between border rounded p-2 bg-gray-50";
+    row.className = `flex justify-between items-center border border-dark-border rounded p-3 cursor-pointer transition-colors duration-150 ${assigned[i] ? 'bg-dark-hover' : 'hover:bg-dark-hover'}`;
+    row.onclick = () => {
+      if (!assigned[i] && currentIndex < playerPool.length) assignSlot(i);
+    };
 
     const label = document.createElement("span");
     label.innerText = `x${MULTIPLIERS[i]}`;
@@ -57,19 +57,6 @@ function renderSlots() {
   }
 }
 
-function renderButtons() {
-  buttonContainer.innerHTML = "";
-  for (let i = 0; i < 9; i++) {
-    if (!assigned[i]) {
-      const btn = document.createElement("button");
-      btn.innerText = `x${MULTIPLIERS[i]}`;
-      btn.className = "bg-blue-500 text-white px-3 py-2 rounded hover:bg-blue-600";
-      btn.onclick = () => assignSlot(i);
-      buttonContainer.appendChild(btn);
-    }
-  }
-}
-
 function assignSlot(index) {
   assigned[index] = playerPool[currentIndex];
   document.getElementById(`slot-${index}`).innerText = `✅ ${playerPool[currentIndex].Player}`;
@@ -78,7 +65,7 @@ function assignSlot(index) {
 
   if (currentIndex < 9) {
     updatePlayer();
-    renderButtons();
+    renderSlots();
   } else {
     showResults();
   }

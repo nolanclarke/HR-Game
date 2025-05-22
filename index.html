@@ -5,20 +5,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Blind HR Slot Game</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            dark: {
+              bg: '#0d1117',
+              card: '#161b22',
+              text: '#c9d1d9',
+              border: '#30363d',
+              hover: '#21262d'
+            }
+          }
+        }
+      }
+    }
+  </script>
 </head>
-<body class="bg-gray-100 min-h-screen flex flex-col items-center justify-start p-6">
-  <div class="max-w-xl w-full bg-white rounded-xl shadow-xl p-6">
-    <h1 class="text-3xl font-bold text-center mb-4">🏏 Blind HR Slot Game</h1>
+<body class="bg-dark-bg text-dark-text min-h-screen flex flex-col items-center justify-start p-6">
+  <div class="max-w-xl w-full bg-dark-card border border-dark-border rounded-xl shadow-xl p-6">
+    <h1 class="text-3xl font-bold text-center mb-4">⚾ Blind HR Slot Game</h1>
     <div id="score" class="text-xl font-semibold text-center mb-4">Total Score: 0</div>
     <div id="current-player" class="text-lg text-center mb-4">Loading...</div>
-    <div id="slot-list" class="flex flex-col gap-2 mb-4"></div>
-    <div id="button-container" class="grid grid-cols-3 gap-2 mb-6"></div>
-    <div id="end-message" class="text-center text-lg font-semibold mt-4"></div>
+    <div id="slot-list" class="flex flex-col gap-2 mb-6"></div>
+    <div id="end-message" class="text-center text-lg font-semibold mt-4 whitespace-pre-line"></div>
     <button id="restart" onclick="startGame()" class="hidden mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mx-auto block">
       🔁 Play Again
     </button>
-    <div class="mt-6 text-center text-sm text-gray-500">
-      Like the game? <a href="https://www.buymeacoffee.com/yourname" target="_blank" class="text-blue-500 underline">Buy me a coffee ☕</a>
+    <div class="mt-6 text-center text-sm text-dark-text leading-relaxed">
+      🧢 <strong>Enjoy the game?</strong><br>
+      Shoot me $1 to help with hosting.<br><br>
+      🧢 <strong>Want your favorite player in the game?</strong><br>
+      $3 and I’ll make it happen.<br><br>
+      • Venmo: <span class="font-mono">@nolan-clarke-1</span><br>
+      • CashApp: <span class="font-mono">$nclarke2</span><br>
+      • Zelle: <span class="font-mono">847-644-4666</span><br><br>
+      Thanks for playing 🙌
     </div>
   </div>
 

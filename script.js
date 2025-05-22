@@ -514,6 +514,7 @@ function renderSlots() {
 
     const content = document.createElement("span");
     content.id = `slot-${i}`;
+
     if (assigned[i]) {
       const container = document.createElement("span");
       container.innerText = assigned[i].Player;

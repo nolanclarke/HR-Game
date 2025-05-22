@@ -485,6 +485,7 @@ function updateScore() {
 
 function endGame() {
   document.getElementById("game-ui").style.display = "none";
+  document.getElementById("current-player-img").classList.add("hidden");
   restartBtn.classList.remove("hidden");
 
   let finalMsg = "🏁 Final Lineup:\n\n";

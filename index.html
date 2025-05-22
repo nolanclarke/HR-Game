@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>12000 Homerun Challenge</title>
+  <title>12,000 Homerun Challenge</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -25,14 +25,16 @@
 </head>
 <body class="bg-dark-bg text-dark-text min-h-screen flex flex-col items-center justify-start p-6">
   <div class="max-w-xl w-full bg-dark-card border border-dark-border rounded-xl shadow-xl p-6">
-    <h1 class="text-3xl font-bold text-center mb-4">⚾ 12000 Homerun Challenge</h1>
+    <h1 class="text-3xl font-bold text-center mb-4">⚾ 12,000 Homerun Challenge</h1>
     <div id="score" class="text-xl font-semibold text-center mb-4">Total Score: 0</div>
     <div id="current-player" class="text-lg text-center mb-4">Loading...</div>
 
-    <div class="text-center text-sm text-dark-text mb-2 font-semibold uppercase tracking-wide">
-      Multiplier
+    <div class="grid grid-cols-2 text-sm text-dark-text mb-2 font-semibold uppercase tracking-wide px-3">
+      <span>Multiplier</span>
+      <span class="text-right">Player</span>
     </div>
-    <div id="slot-list" class="flex flex-col gap-2 mb-6"></div>
+
+    <div id="slot-list" class="flex flex-col gap-2 mb-6 text-[1.05rem]"></div>
 
     <div id="end-message" class="text-center text-lg font-semibold mt-4 whitespace-pre-line"></div>
     <button id="restart" onclick="startGame()" class="hidden mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mx-auto block">

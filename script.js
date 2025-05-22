@@ -60,7 +60,7 @@ function renderSlots() {
   slotList.innerHTML = "";
   for (let i = 0; i < 9; i++) {
     const row = document.createElement("div");
-    row.className = `flex justify-between items-center border border-dark-border rounded p-3 cursor-pointer transition-colors duration-150 ${assigned[i] ? 'bg-dark-hover' : 'hover:bg-dark-hover'}`;
+    row.className = `flex justify-between items-center border border-dark-border rounded p-3 cursor-pointer transition-colors duration-150 text-[1.05rem] ${assigned[i] ? 'bg-dark-hover' : 'hover:bg-dark-hover'}`;
     row.onclick = () => {
       if (!assigned[i] && currentIndex < playerPool.length) assignSlot(i);
     };
@@ -70,7 +70,7 @@ function renderSlots() {
 
     const content = document.createElement("span");
     content.id = `slot-${i}`;
-    content.innerText = assigned[i] ? `✅ ${assigned[i].Player}` : "EMPTY";
+    content.innerText = assigned[i] ? `${assigned[i].Player}` : "EMPTY";
 
     row.appendChild(label);
     row.appendChild(content);

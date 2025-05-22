@@ -5,62 +5,62 @@ const players = [
   {
     "Player": "Barry Bonds",
     "HR": 762,
-    "img": "https://ui-avatars.com/api/?name=Barry+Bonds&background=0D1117&color=fff&size=64"
+    "img": "Images/Barry Bonds.jpg"
   },
   {
     "Player": "Hank Aaron",
     "HR": 755,
-    "img": "https://ui-avatars.com/api/?name=Hank+Aaron&background=0D1117&color=fff&size=64"
+    "img": "Images/Hank Aaron.jpg"
   },
   {
     "Player": "Babe Ruth",
     "HR": 714,
-    "img": "https://ui-avatars.com/api/?name=Babe+Ruth&background=0D1117&color=fff&size=64"
+    "img": "Images/Babe Ruth.jpg"
   },
   {
     "Player": "Albert Pujols",
     "HR": 703,
-    "img": "https://ui-avatars.com/api/?name=Albert+Pujols&background=0D1117&color=fff&size=64"
+    "img": "Images/Albert Pujols.jpg"
   },
   {
     "Player": "Alex Rodriguez",
     "HR": 696,
-    "img": "https://ui-avatars.com/api/?name=Alex+Rodriguez&background=0D1117&color=fff&size=64"
+    "img": "Images/Alex Rodriguez.jpg"
   },
   {
     "Player": "Willie Mays",
     "HR": 660,
-    "img": "https://ui-avatars.com/api/?name=Willie+Mays&background=0D1117&color=fff&size=64"
+    "img": "Images/Willie Mays.jpg"
   },
   {
     "Player": "Ken Griffey Jr.",
     "HR": 630,
-    "img": "https://ui-avatars.com/api/?name=Ken+Griffey+Jr.&background=0D1117&color=fff&size=64"
+    "img": "Images/Ken Griffey Jr.jpg"
   },
   {
     "Player": "Jim Thome",
     "HR": 612,
-    "img": "https://ui-avatars.com/api/?name=Jim+Thome&background=0D1117&color=fff&size=64"
+    "img": "Images/Jim Thome.jpg"
   },
   {
     "Player": "Sammy Sosa",
     "HR": 609,
-    "img": "https://ui-avatars.com/api/?name=Sammy+Sosa&background=0D1117&color=fff&size=64"
+    "img": "Images/Sammy Sosa.jpg"
   },
   {
     "Player": "David Ortiz",
     "HR": 541,
-    "img": "https://ui-avatars.com/api/?name=David+Ortiz&background=0D1117&color=fff&size=64"
+    "img": "Images/David Ortiz.jpg"
   },
   {
     "Player": "Mike Trout",
     "HR": 368,
-    "img": "https://ui-avatars.com/api/?name=Mike+Trout&background=0D1117&color=fff&size=64"
+    "img": "Images/Mike Trout.jpg"
   },
   {
     "Player": "Shohei Ohtani",
     "HR": 171,
-    "img": "https://ui-avatars.com/api/?name=Shohei+Ohtani&background=0D1117&color=fff&size=64"
+    "img": "Images/Shohei Ohtani.jpg"
   },
   {
     "Player": "Bryce Harper",

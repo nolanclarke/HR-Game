@@ -25,13 +25,13 @@
 </head>
 <body class="bg-dark-bg text-dark-text min-h-screen flex flex-col items-center justify-start p-6">
   <div class="relative max-w-xl w-full bg-dark-card border border-dark-border rounded-xl shadow-xl p-6">
-    
-    <!-- Player avatar -->
+
+    <!-- Player avatar top right -->
     <img id="current-player-img" src="" alt="Player" class="absolute top-4 right-4 w-12 h-12 rounded-full border border-dark-border hidden">
 
     <h1 class="text-3xl font-bold text-center mb-4">⚾ 12,000 Homerun Challenge</h1>
 
-    <!-- Game UI wrapper -->
+    <!-- Game content to hide at end -->
     <div id="game-ui">
       <div id="score" class="text-xl font-semibold text-center mb-4">Total Score: 0</div>
       <div id="current-player" class="text-lg text-center mb-4">Loading...</div>
@@ -44,13 +44,11 @@
       <div id="slot-list" class="flex flex-col gap-2 mb-6 text-[1.05rem]"></div>
     </div>
 
-    <!-- End game content -->
     <div id="end-message" class="text-center text-lg font-semibold mt-4 whitespace-pre-line"></div>
     <button id="restart" onclick="startGame()" class="hidden mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mx-auto block">
       🔁 Play Again
     </button>
 
-    <!-- Tip Info -->
     <div class="mt-6 text-center text-sm text-dark-text leading-relaxed">
       🧢 <strong>Enjoy the game?</strong><br>
       Shoot me $1 to help with hosting.<br><br>

@@ -54,52 +54,52 @@ const players = [
   },
   {
     "Player": "Mike Trout",
-    "HR": 368,
+    "HR": 387,
     "img": "player-images/Mike Trout.jpg"
   },
   {
     "Player": "Shohei Ohtani",
-    "HR": 171,
+    "HR": 242,
     "img": "player-images/Shohei Ohtani.jpg"
   },
   {
   "Player": "Bryce Harper",
-  "HR": 306,
+  "HR": 344,
   "img": "player-images/Bryce Harper.jpg"
 },
 {
   "Player": "Aaron Judge",
-  "HR": 257,
+  "HR": 331,
   "img": "player-images/Aaron Judge.jpg"
 },
 {
   "Player": "Giancarlo Stanton",
-  "HR": 402,
+  "HR": 429,
   "img": "player-images/Giancarlo Stanton.jpg"
 },
 {
   "Player": "Nolan Arenado",
-  "HR": 325,
+  "HR": 346,
   "img": "player-images/Nolan Arenado.jpg"
 },
 {
   "Player": "Freddie Freeman",
-  "HR": 321,
+  "HR": 352,
   "img": "player-images/Freddie Freeman.jpg"
 },
 {
   "Player": "Anthony Rizzo",
-  "HR": 295,
+  "HR": 303,
   "img": "player-images/Anthony Rizzo.jpg"
 },
 {
   "Player": "Paul Goldschmidt",
-  "HR": 340,
+  "HR": 367,
   "img": "player-images/Paul Goldschmidt.jpg"
 },
 {
   "Player": "Jose Ramirez",
-  "HR": 230,
+  "HR": 264,
   "img": "player-images/Jose Ramirez.jpg"
 },
 {
@@ -154,17 +154,17 @@ const players = [
 },
 {
   "Player": "DJ LeMahieu",
-  "HR": 112,
+  "HR": 125,
   "img": "player-images/DJ LeMahieu.jpg"
 },
 {
   "Player": "Xander Bogaerts",
-  "HR": 168,
+  "HR": 189,
   "img": "player-images/Xander Bogaerts.jpg"
 },
 {
   "Player": "Dansby Swanson",
-  "HR": 115,
+  "HR": 150,
   "img": "player-images/Dansby Swanson.jpg"
 },
 {
@@ -174,7 +174,7 @@ const players = [
 },
 {
   "Player": "Whit Merrifield",
-  "HR": 90,
+  "HR": 94,
   "img": "player-images/Whit Merrifield.jpg"
 },
 {
@@ -184,7 +184,7 @@ const players = [
 },
 {
   "Player": "J.T. Realmuto",
-  "HR": 138,
+  "HR": 173,
   "img": "player-images/J.T. Realmuto.jpg"
 },
 {
@@ -199,7 +199,7 @@ const players = [
 },
 {
   "Player": "Starling Marte",
-  "HR": 147,
+  "HR": 156,
   "img": "player-images/Starling Marte.jpg"
 },
 {
@@ -209,7 +209,7 @@ const players = [
 },
 {
   "Player": "Jacob deGrom",
-  "HR": 2,
+  "HR": 3,
   "img": "player-images/Jacob deGrom.jpg"
 },
 {
@@ -229,7 +229,7 @@ const players = [
 },
 {
   "Player": "Gerrit Cole",
-  "HR": 0,
+  "HR": 3,
   "img": "player-images/Gerrit Cole.jpg"
 },
 {
@@ -269,7 +269,7 @@ const players = [
 },
 {
   "Player": "John Smoltz",
-  "HR": 3,
+  "HR": 5,
   "img": "player-images/John Smoltz.jpg"
 },
 {
@@ -299,17 +299,17 @@ const players = [
 },
 {
   "Player": "Stephen Strasburg",
-  "HR": 0,
+  "HR": 4,
   "img": "player-images/Stephen Strasburg.jpg"
 },
 {
   "Player": "Josh Donaldson",
-  "HR": 276,
+  "HR": 279,
   "img": "player-images/Josh Donaldson.jpg"
 },
 {
   "Player": "Andrelton Simmons",
-  "HR": 79,
+  "HR": 70,
   "img": "player-images/Andrelton Simmons.jpg"
 },
 {
@@ -319,37 +319,37 @@ const players = [
 },
 {
   "Player": "Carlos Correa",
-  "HR": 174,
+  "HR": 189,
   "img": "player-images/Carlos Correa.jpg"
 },
 {
   "Player": "George Springer",
-  "HR": 244,
+  "HR": 266,
   "img": "player-images/George Springer.jpg"
 },
 {
   "Player": "Kyle Schwarber",
-  "HR": 256,
+  "HR": 301,
   "img": "player-images/Kyle Schwarber.jpg"
 },
 {
   "Player": "Matt Olson",
-  "HR": 219,
+  "HR": 270,
   "img": "player-images/Matt Olson.jpg"
 },
 {
   "Player": "Trea Turner",
-  "HR": 138,
+  "HR": 174,
   "img": "player-images/Trea Turner.jpg"
 },
 {
   "Player": "Francisco Lindor",
-  "HR": 215,
+  "HR": 258,
   "img": "player-images/Francisco Lindor.jpg"
 },
 {
   "Player": "Bo Bichette",
-  "HR": 85,
+  "HR": 97,
   "img": "player-images/Bo Bichette.jpg"
 },
 {
@@ -364,17 +364,17 @@ const players = [
 },
 {
   "Player": "Javier Baez",
-  "HR": 179,
+  "HR": 187,
   "img": "player-images/Javier Baez.jpg"
 },
 {
   "Player": "Manny Machado",
-  "HR": 312,
+  "HR": 345,
   "img": "player-images/Manny Machado.jpg"
 },
 {
   "Player": "Alex Bregman",
-  "HR": 170,
+  "HR": 202,
   "img": "player-images/Alex Bregman.jpg"
 },
 {
@@ -384,22 +384,22 @@ const players = [
 },
 {
   "Player": "Andrew McCutchen",
-  "HR": 299,
+  "HR": 322,
   "img": "player-images/Andrew McCutchen.JPG"
 },
 {
   "Player": "Christian Yelich",
-  "HR": 183,
+  "HR": 213,
   "img": "player-images/Christian Yelich.jpg"
 },
 {
   "Player": "Ronald Acuna Jr.",
-  "HR": 170,
+  "HR": 165,
   "img": "player-images/Ronald Acuna Jr.jpg"
 },
 {
   "Player": "Vladimir Guerrero Jr.",
-  "HR": 130,
+  "HR": 166,
   "img": "player-images/Vladimir Guerrero Jr.jpg"
 }
 ];

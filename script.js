@@ -385,7 +385,7 @@ const players = [
 {
   "Player": "Andrew McCutchen",
   "HR": 299,
-  "img": "player-images/Andrew McCutchen.jpg"
+  "img": "player-images/Andrew McCutchen.JPG"
 },
 {
   "Player": "Christian Yelich",

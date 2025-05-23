@@ -63,345 +63,345 @@ const players = [
     "img": "Images/Shohei Ohtani.jpg"
   },
   {
-    "Player": "Bryce Harper",
-    "HR": 306,
-    "img": "https://ui-avatars.com/api/?name=Bryce+Harper&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Aaron Judge",
-    "HR": 257,
-    "img": "https://ui-avatars.com/api/?name=Aaron+Judge&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Giancarlo Stanton",
-    "HR": 402,
-    "img": "https://ui-avatars.com/api/?name=Giancarlo+Stanton&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Nolan Arenado",
-    "HR": 325,
-    "img": "https://ui-avatars.com/api/?name=Nolan+Arenado&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Freddie Freeman",
-    "HR": 321,
-    "img": "https://ui-avatars.com/api/?name=Freddie+Freeman&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Anthony Rizzo",
-    "HR": 295,
-    "img": "https://ui-avatars.com/api/?name=Anthony+Rizzo&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Paul Goldschmidt",
-    "HR": 340,
-    "img": "https://ui-avatars.com/api/?name=Paul+Goldschmidt&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Jose Ramirez",
-    "HR": 230,
-    "img": "https://ui-avatars.com/api/?name=Jose+Ramirez&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Derek Jeter",
-    "HR": 260,
-    "img": "https://ui-avatars.com/api/?name=Derek+Jeter&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Ichiro Suzuki",
-    "HR": 117,
-    "img": "https://ui-avatars.com/api/?name=Ichiro+Suzuki&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Tony Gwynn",
-    "HR": 135,
-    "img": "https://ui-avatars.com/api/?name=Tony+Gwynn&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Rod Carew",
-    "HR": 92,
-    "img": "https://ui-avatars.com/api/?name=Rod+Carew&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Joe Mauer",
-    "HR": 143,
-    "img": "https://ui-avatars.com/api/?name=Joe+Mauer&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Ozzie Smith",
-    "HR": 28,
-    "img": "https://ui-avatars.com/api/?name=Ozzie+Smith&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Pete Rose",
-    "HR": 160,
-    "img": "https://ui-avatars.com/api/?name=Pete+Rose&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Craig Biggio",
-    "HR": 291,
-    "img": "https://ui-avatars.com/api/?name=Craig+Biggio&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Wade Boggs",
-    "HR": 118,
-    "img": "https://ui-avatars.com/api/?name=Wade+Boggs&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Roberto Alomar",
-    "HR": 210,
-    "img": "https://ui-avatars.com/api/?name=Roberto+Alomar&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "DJ LeMahieu",
-    "HR": 112,
-    "img": "https://ui-avatars.com/api/?name=DJ+LeMahieu&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Xander Bogaerts",
-    "HR": 168,
-    "img": "https://ui-avatars.com/api/?name=Xander+Bogaerts&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Dansby Swanson",
-    "HR": 115,
-    "img": "https://ui-avatars.com/api/?name=Dansby+Swanson&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Tim Anderson",
-    "HR": 98,
-    "img": "https://ui-avatars.com/api/?name=Tim+Anderson&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Whit Merrifield",
-    "HR": 90,
-    "img": "https://ui-avatars.com/api/?name=Whit+Merrifield&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Yadier Molina",
-    "HR": 176,
-    "img": "https://ui-avatars.com/api/?name=Yadier+Molina&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "J.T. Realmuto",
-    "HR": 138,
-    "img": "https://ui-avatars.com/api/?name=J.T.+Realmuto&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Michael Brantley",
-    "HR": 129,
-    "img": "https://ui-avatars.com/api/?name=Michael+Brantley&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Brandon Phillips",
-    "HR": 211,
-    "img": "https://ui-avatars.com/api/?name=Brandon+Phillips&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Starling Marte",
-    "HR": 147,
-    "img": "https://ui-avatars.com/api/?name=Starling+Marte&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Clayton Kershaw",
-    "HR": 1,
-    "img": "https://ui-avatars.com/api/?name=Clayton+Kershaw&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Jacob deGrom",
-    "HR": 2,
-    "img": "https://ui-avatars.com/api/?name=Jacob+deGrom&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Max Scherzer",
-    "HR": 1,
-    "img": "https://ui-avatars.com/api/?name=Max+Scherzer&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Justin Verlander",
-    "HR": 0,
-    "img": "https://ui-avatars.com/api/?name=Justin+Verlander&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Zack Greinke",
-    "HR": 9,
-    "img": "https://ui-avatars.com/api/?name=Zack+Greinke&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Gerrit Cole",
-    "HR": 0,
-    "img": "https://ui-avatars.com/api/?name=Gerrit+Cole&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "CC Sabathia",
-    "HR": 3,
-    "img": "https://ui-avatars.com/api/?name=CC+Sabathia&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Madison Bumgarner",
-    "HR": 19,
-    "img": "https://ui-avatars.com/api/?name=Madison+Bumgarner&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Pedro Martinez",
-    "HR": 0,
-    "img": "https://ui-avatars.com/api/?name=Pedro+Martinez&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Randy Johnson",
-    "HR": 1,
-    "img": "https://ui-avatars.com/api/?name=Randy+Johnson&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Roger Clemens",
-    "HR": 0,
-    "img": "https://ui-avatars.com/api/?name=Roger+Clemens&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Greg Maddux",
-    "HR": 5,
-    "img": "https://ui-avatars.com/api/?name=Greg+Maddux&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Tom Glavine",
-    "HR": 1,
-    "img": "https://ui-avatars.com/api/?name=Tom+Glavine&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "John Smoltz",
-    "HR": 3,
-    "img": "https://ui-avatars.com/api/?name=John+Smoltz&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Nolan Ryan",
-    "HR": 2,
-    "img": "https://ui-avatars.com/api/?name=Nolan+Ryan&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Mark Buehrle",
-    "HR": 1,
-    "img": "https://ui-avatars.com/api/?name=Mark+Buehrle&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "David Wells",
-    "HR": 0,
-    "img": "https://ui-avatars.com/api/?name=David+Wells&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Bartolo Colon",
-    "HR": 1,
-    "img": "https://ui-avatars.com/api/?name=Bartolo+Colon&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Felix Hernandez",
-    "HR": 1,
-    "img": "https://ui-avatars.com/api/?name=Felix+Hernandez&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Stephen Strasburg",
-    "HR": 0,
-    "img": "https://ui-avatars.com/api/?name=Stephen+Strasburg&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Josh Donaldson",
-    "HR": 276,
-    "img": "https://ui-avatars.com/api/?name=Josh+Donaldson&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Andrelton Simmons",
-    "HR": 79,
-    "img": "https://ui-avatars.com/api/?name=Andrelton+Simmons&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Buster Posey",
-    "HR": 158,
-    "img": "https://ui-avatars.com/api/?name=Buster+Posey&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Carlos Correa",
-    "HR": 174,
-    "img": "https://ui-avatars.com/api/?name=Carlos+Correa&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "George Springer",
-    "HR": 244,
-    "img": "https://ui-avatars.com/api/?name=George+Springer&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Kyle Schwarber",
-    "HR": 256,
-    "img": "https://ui-avatars.com/api/?name=Kyle+Schwarber&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Matt Olson",
-    "HR": 219,
-    "img": "https://ui-avatars.com/api/?name=Matt+Olson&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Trea Turner",
-    "HR": 138,
-    "img": "https://ui-avatars.com/api/?name=Trea+Turner&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Francisco Lindor",
-    "HR": 215,
-    "img": "https://ui-avatars.com/api/?name=Francisco+Lindor&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Bo Bichette",
-    "HR": 85,
-    "img": "https://ui-avatars.com/api/?name=Bo+Bichette&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Joey Votto",
-    "HR": 356,
-    "img": "https://ui-avatars.com/api/?name=Joey+Votto&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Nelson Cruz",
-    "HR": 464,
-    "img": "https://ui-avatars.com/api/?name=Nelson+Cruz&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Javier Baez",
-    "HR": 179,
-    "img": "https://ui-avatars.com/api/?name=Javier+Baez&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Manny Machado",
-    "HR": 312,
-    "img": "https://ui-avatars.com/api/?name=Manny+Machado&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Alex Bregman",
-    "HR": 170,
-    "img": "https://ui-avatars.com/api/?name=Alex+Bregman&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Jose Abreu",
-    "HR": 263,
-    "img": "https://ui-avatars.com/api/?name=Jose+Abreu&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Andrew McCutchen",
-    "HR": 299,
-    "img": "https://ui-avatars.com/api/?name=Andrew+McCutchen&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Christian Yelich",
-    "HR": 183,
-    "img": "https://ui-avatars.com/api/?name=Christian+Yelich&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Ronald Acu\u00f1a Jr.",
-    "HR": 170,
-    "img": "https://ui-avatars.com/api/?name=Ronald+Acu\u00f1a+Jr.&background=0D1117&color=fff&size=64"
-  },
-  {
-    "Player": "Vladimir Guerrero Jr.",
-    "HR": 130,
-    "img": "https://ui-avatars.com/api/?name=Vladimir+Guerrero+Jr.&background=0D1117&color=fff&size=64"
-  }
+  "Player": "Bryce Harper",
+  "HR": 306,
+  "img": "Images/Bryce Harper.jpg"
+},
+{
+  "Player": "Aaron Judge",
+  "HR": 257,
+  "img": "Images/Aaron Judge.jpg"
+},
+{
+  "Player": "Giancarlo Stanton",
+  "HR": 402,
+  "img": "Images/Giancarlo Stanton.jpg"
+},
+{
+  "Player": "Nolan Arenado",
+  "HR": 325,
+  "img": "Images/Nolan Arenado.jpg"
+},
+{
+  "Player": "Freddie Freeman",
+  "HR": 321,
+  "img": "Images/Freddie Freeman.jpg"
+},
+{
+  "Player": "Anthony Rizzo",
+  "HR": 295,
+  "img": "Images/Anthony Rizzo.jpg"
+},
+{
+  "Player": "Paul Goldschmidt",
+  "HR": 340,
+  "img": "Images/Paul Goldschmidt.jpg"
+},
+{
+  "Player": "Jose Ramirez",
+  "HR": 230,
+  "img": "Images/Jose Ramirez.jpg"
+},
+{
+  "Player": "Derek Jeter",
+  "HR": 260,
+  "img": "Images/Derek Jeter.jpg"
+},
+{
+  "Player": "Ichiro Suzuki",
+  "HR": 117,
+  "img": "Images/Ichiro Suzuki.jpg"
+},
+{
+  "Player": "Tony Gwynn",
+  "HR": 135,
+  "img": "Images/Tony Gwynn.jpg"
+},
+{
+  "Player": "Rod Carew",
+  "HR": 92,
+  "img": "Images/Rod Carew.jpg"
+},
+{
+  "Player": "Joe Mauer",
+  "HR": 143,
+  "img": "Images/Joe Mauer.jpg"
+},
+{
+  "Player": "Ozzie Smith",
+  "HR": 28,
+  "img": "Images/Ozzie Smith.jpg"
+},
+{
+  "Player": "Pete Rose",
+  "HR": 160,
+  "img": "Images/Pete Rose.jpg"
+},
+{
+  "Player": "Craig Biggio",
+  "HR": 291,
+  "img": "Images/Craig Biggio.jpg"
+},
+{
+  "Player": "Wade Boggs",
+  "HR": 118,
+  "img": "Images/Wade Boggs.jpg"
+},
+{
+  "Player": "Roberto Alomar",
+  "HR": 210,
+  "img": "Images/Roberto Alomar.jpg"
+},
+{
+  "Player": "DJ LeMahieu",
+  "HR": 112,
+  "img": "Images/DJ LeMahieu.jpg"
+},
+{
+  "Player": "Xander Bogaerts",
+  "HR": 168,
+  "img": "Images/Xander Bogaerts.jpg"
+},
+{
+  "Player": "Dansby Swanson",
+  "HR": 115,
+  "img": "Images/Dansby Swanson.jpg"
+},
+{
+  "Player": "Tim Anderson",
+  "HR": 98,
+  "img": "Images/Tim Anderson.jpg"
+},
+{
+  "Player": "Whit Merrifield",
+  "HR": 90,
+  "img": "Images/Whit Merrifield.jpg"
+},
+{
+  "Player": "Yadier Molina",
+  "HR": 176,
+  "img": "Images/Yadier Molina.jpg"
+},
+{
+  "Player": "J.T. Realmuto",
+  "HR": 138,
+  "img": "Images/J.T. Realmuto.jpg"
+},
+{
+  "Player": "Michael Brantley",
+  "HR": 129,
+  "img": "Images/Michael Brantley.jpg"
+},
+{
+  "Player": "Brandon Phillips",
+  "HR": 211,
+  "img": "Images/Brandon Phillips.jpg"
+},
+{
+  "Player": "Starling Marte",
+  "HR": 147,
+  "img": "Images/Starling Marte.jpg"
+},
+{
+  "Player": "Clayton Kershaw",
+  "HR": 1,
+  "img": "Images/Clayton Kershaw.jpg"
+},
+{
+  "Player": "Jacob deGrom",
+  "HR": 2,
+  "img": "Images/Jacob deGrom.jpg"
+},
+{
+  "Player": "Max Scherzer",
+  "HR": 1,
+  "img": "Images/Max Scherzer.jpg"
+},
+{
+  "Player": "Justin Verlander",
+  "HR": 0,
+  "img": "Images/Justin Verlander.jpg"
+},
+{
+  "Player": "Zack Greinke",
+  "HR": 9,
+  "img": "Images/Zack Greinke.jpg"
+},
+{
+  "Player": "Gerrit Cole",
+  "HR": 0,
+  "img": "Images/Gerrit Cole.jpg"
+},
+{
+  "Player": "CC Sabathia",
+  "HR": 3,
+  "img": "Images/CC Sabathia.jpg"
+},
+{
+  "Player": "Madison Bumgarner",
+  "HR": 19,
+  "img": "Images/Madison Bumgarner.jpg"
+},
+{
+  "Player": "Pedro Martinez",
+  "HR": 0,
+  "img": "Images/Pedro Martinez.jpg"
+},
+{
+  "Player": "Randy Johnson",
+  "HR": 1,
+  "img": "Images/Randy Johnson.jpg"
+},
+{
+  "Player": "Roger Clemens",
+  "HR": 0,
+  "img": "Images/Roger Clemens.jpg"
+},
+{
+  "Player": "Greg Maddux",
+  "HR": 5,
+  "img": "Images/Greg Maddux.jpg"
+},
+{
+  "Player": "Tom Glavine",
+  "HR": 1,
+  "img": "Images/Tom Glavine.jpg"
+},
+{
+  "Player": "John Smoltz",
+  "HR": 3,
+  "img": "Images/John Smoltz.jpg"
+},
+{
+  "Player": "Nolan Ryan",
+  "HR": 2,
+  "img": "Images/Nolan Ryan.jpg"
+},
+{
+  "Player": "Mark Buehrle",
+  "HR": 1,
+  "img": "Images/Mark Buehrle.jpg"
+},
+{
+  "Player": "David Wells",
+  "HR": 0,
+  "img": "Images/David Wells.jpg"
+},
+{
+  "Player": "Bartolo Colon",
+  "HR": 1,
+  "img": "Images/Bartolo Colon.jpg"
+},
+{
+  "Player": "Felix Hernandez",
+  "HR": 1,
+  "img": "Images/Felix Hernandez.jpg"
+},
+{
+  "Player": "Stephen Strasburg",
+  "HR": 0,
+  "img": "Images/Stephen Strasburg.jpg"
+},
+{
+  "Player": "Josh Donaldson",
+  "HR": 276,
+  "img": "Images/Josh Donaldson.jpg"
+},
+{
+  "Player": "Andrelton Simmons",
+  "HR": 79,
+  "img": "Images/Andrelton Simmons.jpg"
+},
+{
+  "Player": "Buster Posey",
+  "HR": 158,
+  "img": "Images/Buster Posey.jpg"
+},
+{
+  "Player": "Carlos Correa",
+  "HR": 174,
+  "img": "Images/Carlos Correa.jpg"
+},
+{
+  "Player": "George Springer",
+  "HR": 244,
+  "img": "Images/George Springer.jpg"
+},
+{
+  "Player": "Kyle Schwarber",
+  "HR": 256,
+  "img": "Images/Kyle Schwarber.jpg"
+},
+{
+  "Player": "Matt Olson",
+  "HR": 219,
+  "img": "Images/Matt Olson.jpg"
+},
+{
+  "Player": "Trea Turner",
+  "HR": 138,
+  "img": "Images/Trea Turner.jpg"
+},
+{
+  "Player": "Francisco Lindor",
+  "HR": 215,
+  "img": "Images/Francisco Lindor.jpg"
+},
+{
+  "Player": "Bo Bichette",
+  "HR": 85,
+  "img": "Images/Bo Bichette.jpg"
+},
+{
+  "Player": "Joey Votto",
+  "HR": 356,
+  "img": "Images/Joey Votto.jpg"
+},
+{
+  "Player": "Nelson Cruz",
+  "HR": 464,
+  "img": "Images/Nelson Cruz.jpg"
+},
+{
+  "Player": "Javier Baez",
+  "HR": 179,
+  "img": "Images/Javier Baez.jpg"
+},
+{
+  "Player": "Manny Machado",
+  "HR": 312,
+  "img": "Images/Manny Machado.jpg"
+},
+{
+  "Player": "Alex Bregman",
+  "HR": 170,
+  "img": "Images/Alex Bregman.jpg"
+},
+{
+  "Player": "Jose Abreu",
+  "HR": 263,
+  "img": "Images/Jose Abreu.jpg"
+},
+{
+  "Player": "Andrew McCutchen",
+  "HR": 299,
+  "img": "Images/Andrew McCutchen.jpg"
+},
+{
+  "Player": "Christian Yelich",
+  "HR": 183,
+  "img": "Images/Christian Yelich.jpg"
+},
+{
+  "Player": "Ronald Acuna Jr.",
+  "HR": 170,
+  "img": "Images/Ronald Acuna Jr.jpg"
+},
+{
+  "Player": "Vladimir Guerrero Jr.",
+  "HR": 130,
+  "img": "Images/Vladimir Guerrero Jr.jpg"
+}
 ];
 
 let playerPool = [];

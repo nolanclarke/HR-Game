@@ -5,402 +5,402 @@ const players = [
   {
     "Player": "Barry Bonds",
     "HR": 762,
-    "img": "Images/Barry Bonds.jpg"
+    "img": "player-images/Barry Bonds.jpg"
   },
   {
     "Player": "Hank Aaron",
     "HR": 755,
-    "img": "Images/Hank Aaron.jpg"
+    "img": "player-images/Hank Aaron.jpg"
   },
   {
     "Player": "Babe Ruth",
     "HR": 714,
-    "img": "Images/Babe Ruth.jpg"
+    "img": "player-images/Babe Ruth.jpg"
   },
   {
     "Player": "Albert Pujols",
     "HR": 703,
-    "img": "Images/Albert Pujols.jpg"
+    "img": "player-images/Albert Pujols.jpg"
   },
   {
     "Player": "Alex Rodriguez",
     "HR": 696,
-    "img": "Images/Alex Rodriguez.jpg"
+    "img": "player-images/Alex Rodriguez.jpg"
   },
   {
     "Player": "Willie Mays",
     "HR": 660,
-    "img": "Images/Willie Mays.jpg"
+    "img": "player-images/Willie Mays.jpg"
   },
   {
     "Player": "Ken Griffey Jr.",
     "HR": 630,
-    "img": "Images/Ken Griffey Jr.jpg"
+    "img": "player-images/Ken Griffey Jr.jpg"
   },
   {
     "Player": "Jim Thome",
     "HR": 612,
-    "img": "Images/Jim Thome.jpg"
+    "img": "player-images/Jim Thome.jpg"
   },
   {
     "Player": "Sammy Sosa",
     "HR": 609,
-    "img": "Images/Sammy Sosa.jpg"
+    "img": "player-images/Sammy Sosa.jpg"
   },
   {
     "Player": "David Ortiz",
     "HR": 541,
-    "img": "Images/David Ortiz.jpg"
+    "img": "player-images/David Ortiz.jpg"
   },
   {
     "Player": "Mike Trout",
     "HR": 368,
-    "img": "Images/Mike Trout.jpg"
+    "img": "player-images/Mike Trout.jpg"
   },
   {
     "Player": "Shohei Ohtani",
     "HR": 171,
-    "img": "Images/Shohei Ohtani.jpg"
+    "img": "player-images/Shohei Ohtani.jpg"
   },
   {
   "Player": "Bryce Harper",
   "HR": 306,
-  "img": "Images/Bryce Harper.jpg"
+  "img": "player-images/Bryce Harper.jpg"
 },
 {
   "Player": "Aaron Judge",
   "HR": 257,
-  "img": "Images/Aaron Judge.jpg"
+  "img": "player-images/Aaron Judge.jpg"
 },
 {
   "Player": "Giancarlo Stanton",
   "HR": 402,
-  "img": "Images/Giancarlo Stanton.jpg"
+  "img": "player-images/Giancarlo Stanton.jpg"
 },
 {
   "Player": "Nolan Arenado",
   "HR": 325,
-  "img": "Images/Nolan Arenado.jpg"
+  "img": "player-images/Nolan Arenado.jpg"
 },
 {
   "Player": "Freddie Freeman",
   "HR": 321,
-  "img": "Images/Freddie Freeman.jpg"
+  "img": "player-images/Freddie Freeman.jpg"
 },
 {
   "Player": "Anthony Rizzo",
   "HR": 295,
-  "img": "Images/Anthony Rizzo.jpg"
+  "img": "player-images/Anthony Rizzo.jpg"
 },
 {
   "Player": "Paul Goldschmidt",
   "HR": 340,
-  "img": "Images/Paul Goldschmidt.jpg"
+  "img": "player-images/Paul Goldschmidt.jpg"
 },
 {
   "Player": "Jose Ramirez",
   "HR": 230,
-  "img": "Images/Jose Ramirez.jpg"
+  "img": "player-images/Jose Ramirez.jpg"
 },
 {
   "Player": "Derek Jeter",
   "HR": 260,
-  "img": "Images/Derek Jeter.jpg"
+  "img": "player-images/Derek Jeter.jpg"
 },
 {
   "Player": "Ichiro Suzuki",
   "HR": 117,
-  "img": "Images/Ichiro Suzuki.jpg"
+  "img": "player-images/Ichiro Suzuki.jpg"
 },
 {
   "Player": "Tony Gwynn",
   "HR": 135,
-  "img": "Images/Tony Gwynn.jpg"
+  "img": "player-images/Tony Gwynn.jpg"
 },
 {
   "Player": "Rod Carew",
   "HR": 92,
-  "img": "Images/Rod Carew.jpg"
+  "img": "player-images/Rod Carew.jpg"
 },
 {
   "Player": "Joe Mauer",
   "HR": 143,
-  "img": "Images/Joe Mauer.jpg"
+  "img": "player-images/Joe Mauer.jpg"
 },
 {
   "Player": "Ozzie Smith",
   "HR": 28,
-  "img": "Images/Ozzie Smith.jpg"
+  "img": "player-images/Ozzie Smith.jpg"
 },
 {
   "Player": "Pete Rose",
   "HR": 160,
-  "img": "Images/Pete Rose.jpg"
+  "img": "player-images/Pete Rose.jpg"
 },
 {
   "Player": "Craig Biggio",
   "HR": 291,
-  "img": "Images/Craig Biggio.jpg"
+  "img": "player-images/Craig Biggio.jpg"
 },
 {
   "Player": "Wade Boggs",
   "HR": 118,
-  "img": "Images/Wade Boggs.jpg"
+  "img": "player-images/Wade Boggs.jpg"
 },
 {
   "Player": "Roberto Alomar",
   "HR": 210,
-  "img": "Images/Roberto Alomar.jpg"
+  "img": "player-images/Roberto Alomar.jpg"
 },
 {
   "Player": "DJ LeMahieu",
   "HR": 112,
-  "img": "Images/DJ LeMahieu.jpg"
+  "img": "player-images/DJ LeMahieu.jpg"
 },
 {
   "Player": "Xander Bogaerts",
   "HR": 168,
-  "img": "Images/Xander Bogaerts.jpg"
+  "img": "player-images/Xander Bogaerts.jpg"
 },
 {
   "Player": "Dansby Swanson",
   "HR": 115,
-  "img": "Images/Dansby Swanson.jpg"
+  "img": "player-images/Dansby Swanson.jpg"
 },
 {
   "Player": "Tim Anderson",
   "HR": 98,
-  "img": "Images/Tim Anderson.jpg"
+  "img": "player-images/Tim Anderson.jpg"
 },
 {
   "Player": "Whit Merrifield",
   "HR": 90,
-  "img": "Images/Whit Merrifield.jpg"
+  "img": "player-images/Whit Merrifield.jpg"
 },
 {
   "Player": "Yadier Molina",
   "HR": 176,
-  "img": "Images/Yadier Molina.jpg"
+  "img": "player-images/Yadier Molina.jpg"
 },
 {
   "Player": "J.T. Realmuto",
   "HR": 138,
-  "img": "Images/J.T. Realmuto.jpg"
+  "img": "player-images/J.T. Realmuto.jpg"
 },
 {
   "Player": "Michael Brantley",
   "HR": 129,
-  "img": "Images/Michael Brantley.jpg"
+  "img": "player-images/Michael Brantley.jpg"
 },
 {
   "Player": "Brandon Phillips",
   "HR": 211,
-  "img": "Images/Brandon Phillips.jpg"
+  "img": "player-images/Brandon Phillips.jpg"
 },
 {
   "Player": "Starling Marte",
   "HR": 147,
-  "img": "Images/Starling Marte.jpg"
+  "img": "player-images/Starling Marte.jpg"
 },
 {
   "Player": "Clayton Kershaw",
   "HR": 1,
-  "img": "Images/Clayton Kershaw.jpg"
+  "img": "player-images/Clayton Kershaw.jpg"
 },
 {
   "Player": "Jacob deGrom",
   "HR": 2,
-  "img": "Images/Jacob deGrom.jpg"
+  "img": "player-images/Jacob deGrom.jpg"
 },
 {
   "Player": "Max Scherzer",
   "HR": 1,
-  "img": "Images/Max Scherzer.jpg"
+  "img": "player-images/Max Scherzer.jpg"
 },
 {
   "Player": "Justin Verlander",
   "HR": 0,
-  "img": "Images/Justin Verlander.jpg"
+  "img": "player-images/Justin Verlander.jpg"
 },
 {
   "Player": "Zack Greinke",
   "HR": 9,
-  "img": "Images/Zack Greinke.jpg"
+  "img": "player-images/Zack Greinke.jpg"
 },
 {
   "Player": "Gerrit Cole",
   "HR": 0,
-  "img": "Images/Gerrit Cole.jpg"
+  "img": "player-images/Gerrit Cole.jpg"
 },
 {
   "Player": "CC Sabathia",
   "HR": 3,
-  "img": "Images/CC Sabathia.jpg"
+  "img": "player-images/CC Sabathia.jpg"
 },
 {
   "Player": "Madison Bumgarner",
   "HR": 19,
-  "img": "Images/Madison Bumgarner.jpg"
+  "img": "player-images/Madison Bumgarner.jpg"
 },
 {
   "Player": "Pedro Martinez",
   "HR": 0,
-  "img": "Images/Pedro Martinez.jpg"
+  "img": "player-images/Pedro Martinez.jpg"
 },
 {
   "Player": "Randy Johnson",
   "HR": 1,
-  "img": "Images/Randy Johnson.jpg"
+  "img": "player-images/Randy Johnson.jpg"
 },
 {
   "Player": "Roger Clemens",
   "HR": 0,
-  "img": "Images/Roger Clemens.jpg"
+  "img": "player-images/Roger Clemens.jpg"
 },
 {
   "Player": "Greg Maddux",
   "HR": 5,
-  "img": "Images/Greg Maddux.jpg"
+  "img": "player-images/Greg Maddux.jpg"
 },
 {
   "Player": "Tom Glavine",
   "HR": 1,
-  "img": "Images/Tom Glavine.jpg"
+  "img": "player-images/Tom Glavine.jpg"
 },
 {
   "Player": "John Smoltz",
   "HR": 3,
-  "img": "Images/John Smoltz.jpg"
+  "img": "player-images/John Smoltz.jpg"
 },
 {
   "Player": "Nolan Ryan",
   "HR": 2,
-  "img": "Images/Nolan Ryan.jpg"
+  "img": "player-images/Nolan Ryan.jpg"
 },
 {
   "Player": "Mark Buehrle",
   "HR": 1,
-  "img": "Images/Mark Buehrle.jpg"
+  "img": "player-images/Mark Buehrle.jpg"
 },
 {
   "Player": "David Wells",
   "HR": 0,
-  "img": "Images/David Wells.jpg"
+  "img": "player-images/David Wells.jpg"
 },
 {
   "Player": "Bartolo Colon",
   "HR": 1,
-  "img": "Images/Bartolo Colon.jpg"
+  "img": "player-images/Bartolo Colon.jpg"
 },
 {
   "Player": "Felix Hernandez",
   "HR": 1,
-  "img": "Images/Felix Hernandez.jpg"
+  "img": "player-images/Felix Hernandez.jpg"
 },
 {
   "Player": "Stephen Strasburg",
   "HR": 0,
-  "img": "Images/Stephen Strasburg.jpg"
+  "img": "player-images/Stephen Strasburg.jpg"
 },
 {
   "Player": "Josh Donaldson",
   "HR": 276,
-  "img": "Images/Josh Donaldson.jpg"
+  "img": "player-images/Josh Donaldson.jpg"
 },
 {
   "Player": "Andrelton Simmons",
   "HR": 79,
-  "img": "Images/Andrelton Simmons.jpg"
+  "img": "player-images/Andrelton Simmons.jpg"
 },
 {
   "Player": "Buster Posey",
   "HR": 158,
-  "img": "Images/Buster Posey.jpg"
+  "img": "player-images/Buster Posey.jpg"
 },
 {
   "Player": "Carlos Correa",
   "HR": 174,
-  "img": "Images/Carlos Correa.jpg"
+  "img": "player-images/Carlos Correa.jpg"
 },
 {
   "Player": "George Springer",
   "HR": 244,
-  "img": "Images/George Springer.jpg"
+  "img": "player-images/George Springer.jpg"
 },
 {
   "Player": "Kyle Schwarber",
   "HR": 256,
-  "img": "Images/Kyle Schwarber.jpg"
+  "img": "player-images/Kyle Schwarber.jpg"
 },
 {
   "Player": "Matt Olson",
   "HR": 219,
-  "img": "Images/Matt Olson.jpg"
+  "img": "player-images/Matt Olson.jpg"
 },
 {
   "Player": "Trea Turner",
   "HR": 138,
-  "img": "Images/Trea Turner.jpg"
+  "img": "player-images/Trea Turner.jpg"
 },
 {
   "Player": "Francisco Lindor",
   "HR": 215,
-  "img": "Images/Francisco Lindor.jpg"
+  "img": "player-images/Francisco Lindor.jpg"
 },
 {
   "Player": "Bo Bichette",
   "HR": 85,
-  "img": "Images/Bo Bichette.jpg"
+  "img": "player-images/Bo Bichette.jpg"
 },
 {
   "Player": "Joey Votto",
   "HR": 356,
-  "img": "Images/Joey Votto.jpg"
+  "img": "player-images/Joey Votto.jpg"
 },
 {
   "Player": "Nelson Cruz",
   "HR": 464,
-  "img": "Images/Nelson Cruz.jpg"
+  "img": "player-images/Nelson Cruz.jpg"
 },
 {
   "Player": "Javier Baez",
   "HR": 179,
-  "img": "Images/Javier Baez.jpg"
+  "img": "player-images/Javier Baez.jpg"
 },
 {
   "Player": "Manny Machado",
   "HR": 312,
-  "img": "Images/Manny Machado.jpg"
+  "img": "player-images/Manny Machado.jpg"
 },
 {
   "Player": "Alex Bregman",
   "HR": 170,
-  "img": "Images/Alex Bregman.jpg"
+  "img": "player-images/Alex Bregman.jpg"
 },
 {
   "Player": "Jose Abreu",
   "HR": 263,
-  "img": "Images/Jose Abreu.jpg"
+  "img": "player-images/Jose Abreu.jpg"
 },
 {
   "Player": "Andrew McCutchen",
   "HR": 299,
-  "img": "Images/Andrew McCutchen.jpg"
+  "img": "player-images/Andrew McCutchen.jpg"
 },
 {
   "Player": "Christian Yelich",
   "HR": 183,
-  "img": "Images/Christian Yelich.jpg"
+  "img": "player-images/Christian Yelich.jpg"
 },
 {
   "Player": "Ronald Acuna Jr.",
   "HR": 170,
-  "img": "Images/Ronald Acuna Jr.jpg"
+  "img": "player-images/Ronald Acuna Jr.jpg"
 },
 {
   "Player": "Vladimir Guerrero Jr.",
   "HR": 130,
-  "img": "Images/Vladimir Guerrero Jr.jpg"
+  "img": "player-images/Vladimir Guerrero Jr.jpg"
 }
 ];
 

@@ -23,8 +23,8 @@ const dailyGames = [
     ladder: {
       prompt: "Rank by career PPG, highest to lowest.",
       items: [
-        { name: "Kevin Durant", value: 27.3 },
-        { name: "LeBron James", value: 27.1 },
+        { name: "Kevin Durant", value: 27.1 },
+        { name: "LeBron James", value: 26.8 },
         { name: "Allen Iverson", value: 26.7 },
         { name: "Kobe Bryant", value: 25.0 },
         { name: "Stephen Curry", value: 24.8 }

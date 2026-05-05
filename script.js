@@ -16,10 +16,11 @@ const dailyGames = [
     ],
     pinpoint: {
       prompt: "Ryan Howard career home runs",
-      answer: 382
+      answer: 382,
+      unit: "HR"
     },
     ladder: {
-      prompt: "Rank by career PPG (highest → lowest)",
+      prompt: "Rank by career PPG, highest to lowest.",
       items: [
         { name: "Kevin Durant", value: 27.3 },
         { name: "LeBron James", value: 27.1 },
@@ -37,17 +38,28 @@ let scores = { quickHit: 0, overUnder: 0, pinpoint: 0, ladder: 0 };
 
 const gameEl = document.getElementById("game");
 const scoreNowEl = document.getElementById("scoreNow");
-
 const rounds = ["quickHit", "overUnder", "pinpoint", "ladder"];
+
+function todayGame() {
+  return dailyGames[0];
+}
 
 function updateScore() {
   scoreNowEl.textContent = totalScore;
 }
 
 function addScore(key, val) {
-  scores[key] = val;
+  scores[key] = Math.round(val);
   totalScore = Object.values(scores).reduce((a, b) => a + b, 0);
   updateScore();
+}
+
+function renderShell(label, title, inner) {
+  gameEl.innerHTML = `
+    <div class="round-label">${label}</div>
+    <h2 class="question">${title}</h2>
+    ${inner}
+  `;
 }
 
 function flashResult(good, cb) {
@@ -58,7 +70,7 @@ function flashResult(good, cb) {
   setTimeout(() => {
     gameEl.classList.remove("flash-green", "flash-red");
     cb();
-  }, 600);
+  }, 1100);
 }
 
 function nextRound() {
@@ -79,39 +91,50 @@ function render() {
 /* QUICK HIT */
 
 function renderQuickHit() {
-  const q = dailyGames[0].quickHit;
+  const q = todayGame().quickHit;
 
-  gameEl.innerHTML = `
-    <h2>${q.prompt}</h2>
-    ${q.options.map(o => `<button onclick="answerQuick('${o}')">${o}</button>`).join("")}
-  `;
+  renderShell(
+    "Round 1 / 4 · Quick Hit · 100 pts",
+    q.prompt,
+    `
+      <p class="subtext">One tap. No overthinking.</p>
+      <div class="btn-grid">
+        ${q.options.map(o => `<button onclick="answerQuick('${o}')">${o}</button>`).join("")}
+      </div>
+    `
+  );
 }
 
 function answerQuick(choice) {
-  const q = dailyGames[0].quickHit;
+  const q = todayGame().quickHit;
   const correct = choice === q.answer;
   addScore("quickHit", correct ? 100 : 0);
-
   flashResult(correct, nextRound);
 }
 
-/* OVER UNDER */
+/* OVER / UNDER */
 
 let ouIndex = 0;
 let ouCorrect = 0;
 
 function renderOU() {
-  const q = dailyGames[0].overUnder[ouIndex];
+  const q = todayGame().overUnder[ouIndex];
 
-  gameEl.innerHTML = `
-    <h2>${q.prompt}: ${q.line}</h2>
-    <button onclick="answerOU('over')">Over</button>
-    <button onclick="answerOU('under')">Under</button>
-  `;
+  renderShell(
+    `Round 2 / 4 · Over/Under · ${ouIndex + 1}/3`,
+    `${q.prompt}: ${q.line}`,
+    `
+      <p class="subtext">Is the actual number over or under?</p>
+      <div class="btn-grid">
+        <button onclick="answerOU('over')">Over</button>
+        <button onclick="answerOU('under')" class="secondary">Under</button>
+      </div>
+    `
+  );
 }
 
 function answerOU(choice) {
-  const q = dailyGames[0].overUnder[ouIndex];
+  const q = todayGame().overUnder[ouIndex];
   const correct = q.actual > q.line ? "over" : "under";
   const isCorrect = choice === correct;
 
@@ -119,10 +142,10 @@ function answerOU(choice) {
   ouIndex++;
 
   flashResult(isCorrect, () => {
-    if (ouIndex < 3) renderOU();
-    else {
-      const score = Math.round((ouCorrect / 3) * 100);
-      addScore("overUnder", score);
+    if (ouIndex < todayGame().overUnder.length) {
+      renderOU();
+    } else {
+      addScore("overUnder", Math.round((ouCorrect / todayGame().overUnder.length) * 100));
       nextRound();
     }
   });
@@ -131,27 +154,32 @@ function answerOU(choice) {
 /* PINPOINT */
 
 function renderPin() {
-  const q = dailyGames[0].pinpoint;
+  const q = todayGame().pinpoint;
 
-  gameEl.innerHTML = `
-    <h2>${q.prompt}</h2>
-    <input id="guess" type="number" />
-    <button onclick="submitPin()">Submit</button>
-  `;
+  renderShell(
+    "Round 3 / 4 · PinPoint · 100 pts",
+    q.prompt,
+    `
+      <p class="subtext">Type your best guess. Closer = more points.</p>
+      <input id="guess" type="number" placeholder="Enter number" />
+      <button onclick="submitPin()">Lock It In</button>
+    `
+  );
 }
 
 function scorePin(guess, actual) {
+  if (!guess || guess <= 0 || !actual || actual <= 0) return 0;
   const err = Math.abs(guess - actual) / actual;
   return Math.max(0, Math.round(100 * Math.exp(-3 * err)));
 }
 
 function submitPin() {
   const guess = Number(document.getElementById("guess").value);
-  const actual = dailyGames[0].pinpoint.answer;
+  const actual = todayGame().pinpoint.answer;
   const score = scorePin(guess, actual);
 
   addScore("pinpoint", score);
-  flashResult(score > 70, nextRound);
+  flashResult(score >= 70, nextRound);
 }
 
 /* LADDER */
@@ -159,74 +187,109 @@ function submitPin() {
 let ladder = [];
 
 function renderLadder() {
-  ladder = [...dailyGames[0].ladder.items].sort(() => Math.random() - 0.5);
+  ladder = [...todayGame().ladder.items].sort(() => Math.random() - 0.5);
   drawLadder();
 }
 
 function drawLadder() {
-  gameEl.innerHTML = `
-    <h2>${dailyGames[0].ladder.prompt}</h2>
-    ${ladder.map((p,i)=>`
+  const q = todayGame().ladder;
+
+  renderShell(
+    "Round 4 / 4 · Ladder · 100 pts",
+    q.prompt,
+    `
+      <p class="subtext">Move players into the correct order.</p>
       <div>
-        ${i+1}. ${p.name}
-        <button onclick="move(${i},-1)">↑</button>
-        <button onclick="move(${i},1)">↓</button>
+        ${ladder.map((p, i) => `
+          <div class="ladder-item">
+            <div class="ladder-name">${i + 1}. ${p.name}</div>
+            <div class="ladder-actions">
+              <button class="secondary" onclick="move(${i}, -1)">↑</button>
+              <button class="secondary" onclick="move(${i}, 1)">↓</button>
+            </div>
+          </div>
+        `).join("")}
       </div>
-    `).join("")}
-    <button onclick="submitLadder()">Submit</button>
-  `;
+      <button onclick="submitLadder()">Submit Ladder</button>
+    `
+  );
 }
 
-function move(i,d) {
-  const j = i+d;
-  if (j<0||j>=ladder.length) return;
-  [ladder[i],ladder[j]] = [ladder[j],ladder[i]];
+function move(i, d) {
+  const j = i + d;
+  if (j < 0 || j >= ladder.length) return;
+  [ladder[i], ladder[j]] = [ladder[j], ladder[i]];
   drawLadder();
 }
 
-function submitLadder() {
-  const correct = [...dailyGames[0].ladder.items].sort((a,b)=>b.value-a.value);
+function scoreLadder(userOrder, correctOrder) {
+  const correctRank = {};
+  correctOrder.forEach((item, index) => {
+    correctRank[item.name] = index;
+  });
 
-  let score = 0;
-  for (let i=0;i<ladder.length;i++){
-    if (ladder[i].name === correct[i].name) score+=20;
+  let totalPairs = 0;
+  let correctPairs = 0;
+
+  for (let i = 0; i < userOrder.length; i++) {
+    for (let j = i + 1; j < userOrder.length; j++) {
+      totalPairs++;
+      if (correctRank[userOrder[i].name] < correctRank[userOrder[j].name]) correctPairs++;
+    }
   }
 
+  return Math.round((correctPairs / totalPairs) * 100);
+}
+
+function submitLadder() {
+  const correct = [...todayGame().ladder.items].sort((a, b) => b.value - a.value);
+  const score = scoreLadder(ladder, correct);
+
   addScore("ladder", score);
-  flashResult(score > 60, renderFinal);
+  flashResult(score >= 70, renderFinal);
 }
 
 /* FINAL */
 
 function grade(s) {
-  if (s>=360) return "A";
-  if (s>=320) return "B";
-  if (s>=280) return "C";
-  if (s>=220) return "D";
+  if (s >= 370) return "A+";
+  if (s >= 340) return "A";
+  if (s >= 320) return "B+";
+  if (s >= 300) return "B";
+  if (s >= 270) return "C";
+  if (s >= 230) return "D";
   return "F";
+}
+
+function emoji(score) {
+  if (score >= 85) return "🟢";
+  if (score >= 55) return "🟡";
+  return "🔴";
 }
 
 function renderFinal() {
   const g = grade(totalScore);
 
   const text =
-`${GAME_NAME}
-${totalScore}/400 — ${g}
+`${GAME_NAME} 🗓️ #${todayGame().id}
+Total: ${totalScore}/400 — ${g}
 
-Quick Hit: ${scores.quickHit}
-Over/Under: ${scores.overUnder}
-PinPoint: ${scores.pinpoint}
-Ladder: ${scores.ladder}`;
+Quick Hit: ${scores.quickHit}/100 ${emoji(scores.quickHit)}
+Over/Under: ${scores.overUnder}/100 ${emoji(scores.overUnder)}
+PinPoint: ${scores.pinpoint}/100 ${emoji(scores.pinpoint)}
+Ladder: ${scores.ladder}/100 ${emoji(scores.ladder)}`;
 
   gameEl.innerHTML = `
-    <h2>${totalScore}/400 — ${g}</h2>
-    <pre>${text}</pre>
-    <button onclick="copy()">Copy</button>
+    <div class="round-label">Final Score</div>
+    <h2 class="question">${totalScore}/400 — ${g}</h2>
+    <div class="scorecard" id="shareText">${text}</div>
+    <button onclick="copyScorecard()">Copy Scorecard</button>
   `;
 }
 
-function copy() {
-  navigator.clipboard.writeText(document.querySelector("pre").innerText);
+function copyScorecard() {
+  navigator.clipboard.writeText(document.getElementById("shareText").innerText);
+  alert("Scorecard copied.");
 }
 
 render();

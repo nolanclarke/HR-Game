@@ -171,3 +171,25 @@
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
     line-height: 1.55;
   }
+
+  /* KEEP EVERYTHING YOU HAD — then ADD THIS at the bottom */
+
+.flash-green {
+  animation: flashGreen 0.6s ease;
+}
+
+.flash-red {
+  animation: flashRed 0.6s ease;
+}
+
+@keyframes flashGreen {
+  0% { box-shadow: 0 0 0px #22c55e; }
+  50% { box-shadow: 0 0 30px #22c55e; }
+  100% { box-shadow: 0 0 0px transparent; }
+}
+
+@keyframes flashRed {
+  0% { box-shadow: 0 0 0px #fb7185; }
+  50% { box-shadow: 0 0 30px #fb7185; }
+  100% { box-shadow: 0 0 0px transparent; }
+}

@@ -87,6 +87,11 @@ h1 {
   margin-top: 20px;
 }
 
+.button-stack {
+  display: grid;
+  gap: 12px;
+}
+
 button {
   width: 100%;
   border: 0;

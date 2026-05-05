@@ -49,7 +49,6 @@ const scoreNowEl = document.getElementById("scoreNow");
 const rounds = ["quickHit", "overUnder", "pinpoint", "ladder"];
 
 let ouIndex = 0;
-let ouCorrect = 0;
 let ladder = [];
 
 function todayGame() {
@@ -72,6 +71,10 @@ function colorClass(score) {
   return "red";
 }
 
+function boolColor(isCorrect) {
+  return isCorrect ? "green" : "red";
+}
+
 function emoji(score) {
   if (score >= 85) return "🟢";
   if (score >= 55) return "🟡";
@@ -86,8 +89,7 @@ function renderShell(label, title, inner) {
   `;
 }
 
-function flashByScore(score, cb) {
-  const color = colorClass(score);
+function flashColor(color, cb) {
   gameEl.classList.remove("flash-green", "flash-yellow", "flash-red");
   void gameEl.offsetWidth;
   gameEl.classList.add(`flash-${color}`);
@@ -96,6 +98,10 @@ function flashByScore(score, cb) {
     gameEl.classList.remove("flash-green", "flash-yellow", "flash-red");
     cb();
   }, 1100);
+}
+
+function flashByScore(score, cb) {
+  flashColor(colorClass(score), cb);
 }
 
 function nextRound() {
@@ -139,11 +145,12 @@ function answerQuick(choice) {
     prompt: q.prompt,
     guess: choice,
     correctAnswer: q.answer,
-    points: score
+    points: score,
+    isCorrect: correct
   };
 
   addScore("quickHit", score);
-  flashByScore(score, nextRound);
+  flashColor(boolColor(correct), nextRound);
 }
 
 /* OVER / UNDER */
@@ -169,8 +176,6 @@ function answerOU(choice) {
   const correctAnswer = q.actual > q.line ? "over" : "under";
   const isCorrect = choice === correctAnswer;
 
-  if (isCorrect) ouCorrect++;
-
   const pointsPerQuestion = [33, 33, 34];
   const pointsEarned = isCorrect ? pointsPerQuestion[ouIndex] : 0;
 
@@ -180,14 +185,15 @@ function answerOU(choice) {
     guess: choice,
     actual: q.actual,
     correctAnswer,
-    points: pointsEarned
+    points: pointsEarned,
+    isCorrect
   });
 
   addScore("overUnder", scores.overUnder + pointsEarned);
 
   ouIndex++;
 
-  flashByScore(pointsEarned, () => {
+  flashColor(boolColor(isCorrect), () => {
     if (ouIndex < todayGame().overUnder.length) {
       renderOU();
     } else {
@@ -334,36 +340,41 @@ function renderFinal() {
     <div class="round-label">Final Score</div>
     <h2 class="question">${totalScore}/400</h2>
     <div class="scorecard" id="shareText">${text}</div>
-    <button onclick="copyScorecard()">Copy Scorecard</button>
-    <button class="secondary" onclick="renderAnswers()">See Answers</button>
+    <div class="button-stack">
+      <button onclick="copyScorecard()">Copy Scorecard</button>
+      <button class="secondary" onclick="renderAnswers()">See Answers</button>
+    </div>
   `;
 }
 
 function renderAnswers() {
-  const ouCards = answers.overUnder.map((a, i) => `
-    <div class="answer-card">
-      <div class="answer-title">Over/Under ${i + 1}</div>
-      <p class="answer-row">${a.prompt}</p>
-      <p class="answer-row">Line: <strong>${a.line}</strong></p>
-      <p class="answer-row">Your pick: <strong>${a.guess}</strong></p>
-      <p class="answer-row">Actual: <strong>${a.actual}</strong> (${a.correctAnswer})</p>
-      <p class="answer-points ${colorClass(a.points) + "-text"}">${a.points} pts</p>
-    </div>
-  `).join("");
+  const ouCards = answers.overUnder.map((a, i) => {
+    const color = boolColor(a.isCorrect);
+
+    return `
+      <div class="answer-card">
+        <div class="answer-title">Over/Under ${i + 1}</div>
+        <p class="answer-row">${a.prompt}</p>
+        <p class="answer-row">Line: <strong>${a.line}</strong></p>
+        <p class="answer-row">Your pick: <strong>${a.guess}</strong></p>
+        <p class="answer-row">Actual: <strong>${a.actual}</strong> (${a.correctAnswer})</p>
+        <p class="answer-points ${color}-text">${a.points} pts</p>
+      </div>
+    `;
+  }).join("");
 
   const ladderGuess = answers.ladder.guess.map((p, i) => `${i + 1}. ${p.name}`).join("<br>");
   const ladderCorrect = answers.ladder.correctAnswer.map((p, i) => `${i + 1}. ${p.name} — ${p.value}`).join("<br>");
 
   gameEl.innerHTML = `
     <div class="round-label">Answer Review</div>
-    <h2 class="question">How you scored</h2>
 
     <div class="answer-card">
       <div class="answer-title">Quick Hit</div>
       <p class="answer-row">${answers.quickHit.prompt}</p>
       <p class="answer-row">Your answer: <strong>${answers.quickHit.guess}</strong></p>
       <p class="answer-row">Correct answer: <strong>${answers.quickHit.correctAnswer}</strong></p>
-      <p class="answer-points ${colorClass(answers.quickHit.points) + "-text"}">${answers.quickHit.points} pts</p>
+      <p class="answer-points ${boolColor(answers.quickHit.isCorrect)}-text">${answers.quickHit.points} pts</p>
     </div>
 
     ${ouCards}
@@ -373,14 +384,14 @@ function renderAnswers() {
       <p class="answer-row">${answers.pinpoint.prompt}</p>
       <p class="answer-row">Your guess: <strong>${answers.pinpoint.guess}</strong></p>
       <p class="answer-row">Correct answer: <strong>${answers.pinpoint.correctAnswer} ${answers.pinpoint.unit}</strong></p>
-      <p class="answer-points ${colorClass(answers.pinpoint.points) + "-text"}">${answers.pinpoint.points} pts</p>
+      <p class="answer-points ${colorClass(answers.pinpoint.points)}-text">${answers.pinpoint.points} pts</p>
     </div>
 
     <div class="answer-card">
       <div class="answer-title">Ladder</div>
       <p class="answer-row"><strong>Your order:</strong><br>${ladderGuess}</p>
       <p class="answer-row"><strong>Correct order:</strong><br>${ladderCorrect}</p>
-      <p class="answer-points ${colorClass(answers.ladder.points) + "-text"}">${answers.ladder.points} pts</p>
+      <p class="answer-points ${colorClass(answers.ladder.points)}-text">${answers.ladder.points} pts</p>
     </div>
 
     <button onclick="renderFinal()">Back to Scorecard</button>

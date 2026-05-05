@@ -3,62 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>12,000 Homerun Challenge</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            dark: {
-              bg: '#0d1117',
-              card: '#161b22',
-              text: '#c9d1d9',
-              border: '#30363d',
-              hover: '#21262d'
-            }
-          }
-        }
-      }
-    }
-  </script>
+  <title>BoxScore</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body class="bg-dark-bg text-dark-text min-h-screen flex flex-col items-center justify-start p-6">
-  <div class="relative max-w-xl w-full bg-dark-card border border-dark-border rounded-xl shadow-xl p-6">
-
-    <!-- Player avatar top right -->
-    <img id="current-player-img" src="" alt="Player" class="absolute top-[92px] right-6 w-16 h-16 rounded-full border border-dark-border hidden">
-    <h1 class="text-3xl font-bold text-center mb-4">⚾ 12,000 Homerun Challenge</h1>
-
-    <!-- Game content to hide at end -->
-    <div id="game-ui">
-      <div id="score" class="text-xl font-semibold text-center mb-4">Total Score: 0</div>
-      <div id="current-player" class="text-lg text-center mb-4">Loading...</div>
-
-      <div class="grid grid-cols-2 text-sm text-dark-text mb-2 font-semibold uppercase tracking-wide px-3">
-        <span>Multiplier</span>
-        <span class="text-right">Player</span>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Daily Sports IQ</p>
+        <h1>BoxScore</h1>
       </div>
+      <div class="score-pill">
+        <span id="scoreNow">0</span><span>/400</span>
+      </div>
+    </header>
 
-      <div id="slot-list" class="flex flex-col gap-2 mb-6 text-[1.05rem]"></div>
-    </div>
-
-    <div id="end-message" class="text-center text-lg font-semibold mt-4 whitespace-pre-line"></div>
-    <button id="restart" onclick="startGame()" class="hidden mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mx-auto block">
-      🔁 Play Again
-    </button>
-
-    <div class="mt-6 text-center text-sm text-dark-text leading-relaxed">
-      🧢 <strong>Enjoy the game?</strong><br>
-      Shoot me $1 to help with hosting.<br><br>
-      🧢 <strong>Want your favorite player in the game?</strong><br>
-      $3 and I’ll make it happen.<br><br>
-      • Venmo: <span class="font-mono">@nolan-clarke-1</span><br>
-      • CashApp: <span class="font-mono">$nclarke2</span><br>
-      • Zelle: <span class="font-mono">847-644-4666</span><br><br>
-      Thanks for playing 🙌
-    </div>
-  </div>
+    <section id="game" class="card"></section>
+  </main>
 
   <script src="script.js"></script>
 </body>

@@ -1,518 +1,392 @@
-const MULTIPLIERS = [1, 1, 1, 2, 2, 3, 3, 4, 5];
-const GOAL_SCORE = 12000;
+const GAME_NAME = "BoxScore";
+const START_DATE = new Date("2026-05-05T00:00:00");
 
-const players = [
+const dailyGames = [
   {
-    "Player": "Barry Bonds",
-    "HR": 762,
-    "img": "player-images/Barry Bonds.jpg"
+    id: 1,
+    quickHit: {
+      prompt: "Were Chris Paul and James Harden ever teammates?",
+      options: ["Yes", "No"],
+      answer: "Yes",
+      reveal: "They played together on the Houston Rockets."
+    },
+    overUnder: [
+      { prompt: "Derrick Rose career points", line: 12500, actual: 12573 },
+      { prompt: "Mike Trout career WAR", line: 85, actual: 86.2 },
+      { prompt: "Patrick Mahomes career playoff wins", line: 14, actual: 17 }
+    ],
+    pinpoint: {
+      prompt: "Ryan Howard career home runs",
+      answer: 382,
+      unit: "HR"
+    },
+    ladder: {
+      prompt: "Rank these NBA players by career PPG, highest to lowest.",
+      statLabel: "career PPG",
+      items: [
+        { name: "Kevin Durant", value: 27.3 },
+        { name: "LeBron James", value: 27.1 },
+        { name: "Allen Iverson", value: 26.7 },
+        { name: "Kobe Bryant", value: 25.0 },
+        { name: "Stephen Curry", value: 24.8 }
+      ]
+    }
   },
   {
-    "Player": "Hank Aaron",
-    "HR": 755,
-    "img": "player-images/Hank Aaron.jpg"
-  },
-  {
-    "Player": "Babe Ruth",
-    "HR": 714,
-    "img": "player-images/Babe Ruth.jpg"
-  },
-  {
-    "Player": "Albert Pujols",
-    "HR": 703,
-    "img": "player-images/Albert Pujols.jpg"
-  },
-  {
-    "Player": "Alex Rodriguez",
-    "HR": 696,
-    "img": "player-images/Alex Rodriguez.jpg"
-  },
-  {
-    "Player": "Willie Mays",
-    "HR": 660,
-    "img": "player-images/Willie Mays.jpg"
-  },
-  {
-    "Player": "Ken Griffey Jr.",
-    "HR": 630,
-    "img": "player-images/Ken Griffey Jr.jpg"
-  },
-  {
-    "Player": "Jim Thome",
-    "HR": 612,
-    "img": "player-images/Jim Thome.jpg"
-  },
-  {
-    "Player": "Sammy Sosa",
-    "HR": 609,
-    "img": "player-images/Sammy Sosa.jpg"
-  },
-  {
-    "Player": "David Ortiz",
-    "HR": 541,
-    "img": "player-images/David Ortiz.jpg"
-  },
-  {
-    "Player": "Mike Trout",
-    "HR": 387,
-    "img": "player-images/Mike Trout.jpg"
-  },
-  {
-    "Player": "Shohei Ohtani",
-    "HR": 242,
-    "img": "player-images/Shohei Ohtani.jpg"
-  },
-  {
-  "Player": "Bryce Harper",
-  "HR": 344,
-  "img": "player-images/Bryce Harper.jpg"
-},
-{
-  "Player": "Aaron Judge",
-  "HR": 331,
-  "img": "player-images/Aaron Judge.jpg"
-},
-{
-  "Player": "Giancarlo Stanton",
-  "HR": 429,
-  "img": "player-images/Giancarlo Stanton.jpg"
-},
-{
-  "Player": "Nolan Arenado",
-  "HR": 346,
-  "img": "player-images/Nolan Arenado.jpg"
-},
-{
-  "Player": "Freddie Freeman",
-  "HR": 352,
-  "img": "player-images/Freddie Freeman.jpg"
-},
-{
-  "Player": "Anthony Rizzo",
-  "HR": 303,
-  "img": "player-images/Anthony Rizzo.jpg"
-},
-{
-  "Player": "Paul Goldschmidt",
-  "HR": 367,
-  "img": "player-images/Paul Goldschmidt.jpg"
-},
-{
-  "Player": "Jose Ramirez",
-  "HR": 264,
-  "img": "player-images/Jose Ramirez.jpg"
-},
-{
-  "Player": "Derek Jeter",
-  "HR": 260,
-  "img": "player-images/Derek Jeter.jpg"
-},
-{
-  "Player": "Ichiro Suzuki",
-  "HR": 117,
-  "img": "player-images/Ichiro Suzuki.jpg"
-},
-{
-  "Player": "Tony Gwynn",
-  "HR": 135,
-  "img": "player-images/Tony Gwynn.jpg"
-},
-{
-  "Player": "Rod Carew",
-  "HR": 92,
-  "img": "player-images/Rod Carew.jpg"
-},
-{
-  "Player": "Joe Mauer",
-  "HR": 143,
-  "img": "player-images/Joe Mauer.jpg"
-},
-{
-  "Player": "Ozzie Smith",
-  "HR": 28,
-  "img": "player-images/Ozzie Smith.jpg"
-},
-{
-  "Player": "Pete Rose",
-  "HR": 160,
-  "img": "player-images/Pete Rose.jpg"
-},
-{
-  "Player": "Craig Biggio",
-  "HR": 291,
-  "img": "player-images/Craig Biggio.jpg"
-},
-{
-  "Player": "Wade Boggs",
-  "HR": 118,
-  "img": "player-images/Wade Boggs.jpg"
-},
-{
-  "Player": "Roberto Alomar",
-  "HR": 210,
-  "img": "player-images/Roberto Alomar.jpg"
-},
-{
-  "Player": "DJ LeMahieu",
-  "HR": 125,
-  "img": "player-images/DJ LeMahieu.jpg"
-},
-{
-  "Player": "Xander Bogaerts",
-  "HR": 189,
-  "img": "player-images/Xander Bogaerts.jpg"
-},
-{
-  "Player": "Dansby Swanson",
-  "HR": 150,
-  "img": "player-images/Dansby Swanson.jpg"
-},
-{
-  "Player": "Tim Anderson",
-  "HR": 98,
-  "img": "player-images/Tim Anderson.jpg"
-},
-{
-  "Player": "Whit Merrifield",
-  "HR": 94,
-  "img": "player-images/Whit Merrifield.jpg"
-},
-{
-  "Player": "Yadier Molina",
-  "HR": 176,
-  "img": "player-images/Yadier Molina.jpg"
-},
-{
-  "Player": "J.T. Realmuto",
-  "HR": 173,
-  "img": "player-images/J.T. Realmuto.jpg"
-},
-{
-  "Player": "Michael Brantley",
-  "HR": 129,
-  "img": "player-images/Michael Brantley.jpg"
-},
-{
-  "Player": "Brandon Phillips",
-  "HR": 211,
-  "img": "player-images/Brandon Phillips.jpg"
-},
-{
-  "Player": "Starling Marte",
-  "HR": 156,
-  "img": "player-images/Starling Marte.jpg"
-},
-{
-  "Player": "Clayton Kershaw",
-  "HR": 1,
-  "img": "player-images/Clayton Kershaw.jpg"
-},
-{
-  "Player": "Jacob deGrom",
-  "HR": 3,
-  "img": "player-images/Jacob deGrom.jpg"
-},
-{
-  "Player": "Max Scherzer",
-  "HR": 1,
-  "img": "player-images/Max Scherzer.jpg"
-},
-{
-  "Player": "Justin Verlander",
-  "HR": 0,
-  "img": "player-images/Justin Verlander.jpg"
-},
-{
-  "Player": "Zack Greinke",
-  "HR": 9,
-  "img": "player-images/Zack Greinke.jpg"
-},
-{
-  "Player": "Gerrit Cole",
-  "HR": 3,
-  "img": "player-images/Gerrit Cole.jpg"
-},
-{
-  "Player": "CC Sabathia",
-  "HR": 3,
-  "img": "player-images/CC Sabathia.jpg"
-},
-{
-  "Player": "Madison Bumgarner",
-  "HR": 19,
-  "img": "player-images/Madison Bumgarner.jpg"
-},
-{
-  "Player": "Pedro Martinez",
-  "HR": 0,
-  "img": "player-images/Pedro Martinez.jpg"
-},
-{
-  "Player": "Randy Johnson",
-  "HR": 1,
-  "img": "player-images/Randy Johnson.jpg"
-},
-{
-  "Player": "Roger Clemens",
-  "HR": 0,
-  "img": "player-images/Roger Clemens.jpg"
-},
-{
-  "Player": "Greg Maddux",
-  "HR": 5,
-  "img": "player-images/Greg Maddux.jpg"
-},
-{
-  "Player": "Tom Glavine",
-  "HR": 1,
-  "img": "player-images/Tom Glavine.jpg"
-},
-{
-  "Player": "John Smoltz",
-  "HR": 5,
-  "img": "player-images/John Smoltz.jpg"
-},
-{
-  "Player": "Nolan Ryan",
-  "HR": 2,
-  "img": "player-images/Nolan Ryan.jpg"
-},
-{
-  "Player": "Mark Buehrle",
-  "HR": 1,
-  "img": "player-images/Mark Buehrle.jpg"
-},
-{
-  "Player": "David Wells",
-  "HR": 0,
-  "img": "player-images/David Wells.jpg"
-},
-{
-  "Player": "Bartolo Colon",
-  "HR": 1,
-  "img": "player-images/Bartolo Colon.jpg"
-},
-{
-  "Player": "Felix Hernandez",
-  "HR": 1,
-  "img": "player-images/Felix Hernandez.jpg"
-},
-{
-  "Player": "Stephen Strasburg",
-  "HR": 4,
-  "img": "player-images/Stephen Strasburg.jpg"
-},
-{
-  "Player": "Josh Donaldson",
-  "HR": 279,
-  "img": "player-images/Josh Donaldson.jpg"
-},
-{
-  "Player": "Andrelton Simmons",
-  "HR": 70,
-  "img": "player-images/Andrelton Simmons.jpg"
-},
-{
-  "Player": "Buster Posey",
-  "HR": 158,
-  "img": "player-images/Buster Posey.jpg"
-},
-{
-  "Player": "Carlos Correa",
-  "HR": 189,
-  "img": "player-images/Carlos Correa.jpg"
-},
-{
-  "Player": "George Springer",
-  "HR": 266,
-  "img": "player-images/George Springer.jpg"
-},
-{
-  "Player": "Kyle Schwarber",
-  "HR": 301,
-  "img": "player-images/Kyle Schwarber.jpg"
-},
-{
-  "Player": "Matt Olson",
-  "HR": 270,
-  "img": "player-images/Matt Olson.jpg"
-},
-{
-  "Player": "Trea Turner",
-  "HR": 174,
-  "img": "player-images/Trea Turner.jpg"
-},
-{
-  "Player": "Francisco Lindor",
-  "HR": 258,
-  "img": "player-images/Francisco Lindor.jpg"
-},
-{
-  "Player": "Bo Bichette",
-  "HR": 97,
-  "img": "player-images/Bo Bichette.jpg"
-},
-{
-  "Player": "Joey Votto",
-  "HR": 356,
-  "img": "player-images/Joey Votto.jpg"
-},
-{
-  "Player": "Nelson Cruz",
-  "HR": 464,
-  "img": "player-images/Nelson Cruz.jpg"
-},
-{
-  "Player": "Javier Baez",
-  "HR": 187,
-  "img": "player-images/Javier Baez.jpg"
-},
-{
-  "Player": "Manny Machado",
-  "HR": 345,
-  "img": "player-images/Manny Machado.jpg"
-},
-{
-  "Player": "Alex Bregman",
-  "HR": 202,
-  "img": "player-images/Alex Bregman.jpg"
-},
-{
-  "Player": "Jose Abreu",
-  "HR": 263,
-  "img": "player-images/Jose Abreu.jpg"
-},
-{
-  "Player": "Andrew McCutchen",
-  "HR": 322,
-  "img": "player-images/Andrew McCutchen.JPG"
-},
-{
-  "Player": "Christian Yelich",
-  "HR": 213,
-  "img": "player-images/Christian Yelich.jpg"
-},
-{
-  "Player": "Ronald Acuna Jr.",
-  "HR": 165,
-  "img": "player-images/Ronald Acuna Jr.jpg"
-},
-{
-  "Player": "Vladimir Guerrero Jr.",
-  "HR": 166,
-  "img": "player-images/Vladimir Guerrero Jr.jpg"
-}
+    id: 2,
+    quickHit: {
+      prompt: "Did Shohei Ohtani win an MVP before joining the Dodgers?",
+      options: ["Yes", "No"],
+      answer: "Yes",
+      reveal: "He won AL MVP with the Angels."
+    },
+    overUnder: [
+      { prompt: "Barry Bonds career home runs", line: 750, actual: 762 },
+      { prompt: "Tom Brady Super Bowl wins", line: 6.5, actual: 7 },
+      { prompt: "Steph Curry career 3PM", line: 3500, actual: 3747 }
+    ],
+    pinpoint: {
+      prompt: "Shaquille O'Neal career points",
+      answer: 28596,
+      unit: "points"
+    },
+    ladder: {
+      prompt: "Rank these MLB players by career home runs, highest to lowest.",
+      statLabel: "career HR",
+      items: [
+        { name: "Albert Pujols", value: 703 },
+        { name: "Ken Griffey Jr.", value: 630 },
+        { name: "Jim Thome", value: 612 },
+        { name: "Frank Thomas", value: 521 },
+        { name: "David Ortiz", value: 541 }
+      ]
+    }
+  }
 ];
 
-let playerPool = [];
-let currentIndex = 0;
-let assigned = Array(9).fill(null);
+let currentRound = 0;
+let totalScore = 0;
+let scores = {
+  quickHit: null,
+  overUnder: null,
+  pinpoint: null,
+  ladder: null
+};
 
-const scoreEl = document.getElementById("score");
-const playerEl = document.getElementById("current-player");
-const slotList = document.getElementById("slot-list");
-const endMessage = document.getElementById("end-message");
-const restartBtn = document.getElementById("restart");
+const gameEl = document.getElementById("game");
+const scoreNowEl = document.getElementById("scoreNow");
 
-function shuffle(arr) {
-  return [...arr].sort(() => Math.random() - 0.5);
+const rounds = ["quickHit", "overUnder", "pinpoint", "ladder"];
+
+function getTodayGame() {
+  const now = new Date();
+  const diffDays = Math.floor((now - START_DATE) / (1000 * 60 * 60 * 24));
+  const index = ((diffDays % dailyGames.length) + dailyGames.length) % dailyGames.length;
+  return dailyGames[index];
 }
 
-function assignSlot(index) {
-  assigned[index] = playerPool[currentIndex];
-  currentIndex++;
-  updateScore();
-
-  if (currentIndex < 9) {
-    updatePlayer();
-    renderSlots();
-  } else {
-    endGame();
-  }
-}
-
-function updatePlayer() {
-  const p = playerPool[currentIndex];
-  playerEl.innerText = `Player ${currentIndex + 1} of 9: ${p.Player}`;
-  const imgEl = document.getElementById("current-player-img");
-  imgEl.src = p.img;
-  imgEl.classList.remove("hidden");
-}
-
-function renderSlots() {
-  slotList.innerHTML = "";
-  for (let i = 0; i < 9; i++) {
-    const row = document.createElement("div");
-    row.className = `flex justify-between items-center border border-dark-border rounded p-3 cursor-pointer transition-colors duration-150 text-[1.05rem] ${assigned[i] ? 'bg-dark-hover' : 'hover:bg-dark-hover'}`;
-    row.onclick = () => {
-      if (!assigned[i] && currentIndex < playerPool.length) assignSlot(i);
-    };
-
-    const label = document.createElement("span");
-    label.innerText = `x${MULTIPLIERS[i]}`;
-
-    const content = document.createElement("span");
-    content.id = `slot-${i}`;
-
-    if (assigned[i]) {
-      const text = document.createElement("span");
-      text.innerText = assigned[i].Player;
-
-      const img = document.createElement("img");
-      img.src = assigned[i].img;
-      img.alt = assigned[i].Player;
-      img.className = "w-6 h-6 rounded-full ml-2 inline-block align-middle";
-
-      content.appendChild(text);
-      content.appendChild(img);
-    } else {
-      content.innerText = "EMPTY";
-    }
-
-    row.appendChild(label);
-    row.appendChild(content);
-    slotList.appendChild(row);
-  }
-}
+const todayGame = getTodayGame();
 
 function updateScore() {
-  let total = 0;
-  for (let i = 0; i < 9; i++) {
-    if (assigned[i]) total += assigned[i].HR * MULTIPLIERS[i];
-  }
-  scoreEl.innerText = `Total Score: ${total}`;
+  scoreNowEl.textContent = totalScore;
 }
 
-function endGame() {
-  document.getElementById("game-ui").style.display = "none";
-  document.getElementById("current-player-img").classList.add("hidden");
-  restartBtn.classList.remove("hidden");
-
-  let finalMsg = "🏁 Final Lineup:\n\n";
-  let total = 0;
-  for (let i = 0; i < 9; i++) {
-    const p = assigned[i];
-    const m = MULTIPLIERS[i];
-    finalMsg += `x${m} – ${p.Player} (${p.HR} HRs) = ${p.HR * m}\n`;
-    total += p.HR * m;
-  }
-
-  finalMsg += `\n🎯 Final Score: ${total}\n${total >= GOAL_SCORE ? "🎉 You Win!" : "❌ Try Again!"}`;
-  endMessage.innerText = finalMsg;
-}
-
-function startGame() {
-  playerPool = shuffle(players).slice(0, 9);
-  assigned = Array(9).fill(null);
-  currentIndex = 0;
-
-  endMessage.innerText = "";
-  restartBtn.classList.add("hidden");
-  document.getElementById("game-ui").style.display = "block";
-
-  updatePlayer();
-  renderSlots();
+function addScore(roundName, score) {
+  scores[roundName] = Math.round(score);
+  totalScore = Object.values(scores)
+    .filter(v => v !== null)
+    .reduce((sum, v) => sum + v, 0);
   updateScore();
 }
 
-startGame();
+function grade(total) {
+  if (total >= 370) return "A+";
+  if (total >= 340) return "A";
+  if (total >= 320) return "B+";
+  if (total >= 300) return "B";
+  if (total >= 270) return "C";
+  if (total >= 230) return "D";
+  return "F";
+}
+
+function emoji(score) {
+  if (score >= 85) return "🟢";
+  if (score >= 55) return "🟡";
+  return "🔴";
+}
+
+function nextRound() {
+  currentRound++;
+  render();
+}
+
+function renderRoundShell(label, title, inner) {
+  gameEl.innerHTML = `
+    <div class="round-label">${label}</div>
+    <h2 class="question">${title}</h2>
+    ${inner}
+  `;
+}
+
+function render() {
+  const roundName = rounds[currentRound];
+
+  if (!roundName) {
+    renderFinal();
+    return;
+  }
+
+  if (roundName === "quickHit") renderQuickHit();
+  if (roundName === "overUnder") renderOverUnder();
+  if (roundName === "pinpoint") renderPinpoint();
+  if (roundName === "ladder") renderLadder();
+}
+
+// ROUND 1: QUICK HIT
+
+function renderQuickHit() {
+  const q = todayGame.quickHit;
+
+  renderRoundShell(
+    "Round 1 / 4 · Quick Hit · 100 pts",
+    q.prompt,
+    `
+      <div class="btn-grid">
+        ${q.options.map(opt => `<button onclick="answerQuickHit('${opt}')">${opt}</button>`).join("")}
+      </div>
+    `
+  );
+}
+
+function answerQuickHit(choice) {
+  const q = todayGame.quickHit;
+  const score = choice === q.answer ? 100 : 0;
+  addScore("quickHit", score);
+
+  gameEl.innerHTML = `
+    <div class="round-label">Quick Hit Result</div>
+    <h2 class="question ${score === 100 ? "green" : "red"}">${score}/100</h2>
+    <p class="subtext">${q.reveal}</p>
+    <button onclick="nextRound()">Next Round</button>
+  `;
+}
+
+// ROUND 2: OVER / UNDER
+
+let ouIndex = 0;
+let ouCorrect = 0;
+
+function renderOverUnder() {
+  const q = todayGame.overUnder[ouIndex];
+
+  renderRoundShell(
+    `Round 2 / 4 · Over/Under · Question ${ouIndex + 1}/3`,
+    `${q.prompt}: ${q.line}`,
+    `
+      <p class="subtext">Is the actual number over or under?</p>
+      <div class="btn-grid">
+        <button onclick="answerOU('over')">Over</button>
+        <button onclick="answerOU('under')" class="secondary">Under</button>
+      </div>
+    `
+  );
+}
+
+function answerOU(choice) {
+  const q = todayGame.overUnder[ouIndex];
+  const correct = q.actual > q.line ? "over" : "under";
+  if (choice === correct) ouCorrect++;
+
+  ouIndex++;
+
+  if (ouIndex < todayGame.overUnder.length) {
+    renderOverUnder();
+  } else {
+    const score = Math.round((ouCorrect / todayGame.overUnder.length) * 100);
+    addScore("overUnder", score);
+
+    gameEl.innerHTML = `
+      <div class="round-label">Over/Under Result</div>
+      <h2 class="question">${score}/100</h2>
+      <p class="subtext">You got ${ouCorrect}/${todayGame.overUnder.length} correct.</p>
+      <button onclick="nextRound()">Next Round</button>
+    `;
+  }
+}
+
+// ROUND 3: PINPOINT
+
+function renderPinpoint() {
+  const q = todayGame.pinpoint;
+
+  renderRoundShell(
+    "Round 3 / 4 · PinPoint · 100 pts",
+    q.prompt,
+    `
+      <input id="pinGuess" type="number" placeholder="Enter your guess" />
+      <button onclick="submitPinpoint()">Lock It In</button>
+    `
+  );
+}
+
+function scorePinpoint(guess, answer) {
+  guess = Number(guess);
+  answer = Number(answer);
+
+  if (!guess || guess <= 0 || !answer || answer <= 0) return 0;
+
+  const error = Math.abs(guess - answer);
+  const percentError = error / answer;
+
+  // This curve works across tiny and huge stats.
+  // 0% error = 100
+  // 10% error ≈ 74
+  // 25% error ≈ 37
+  // 50%+ error ≈ near 0
+  const score = 100 * Math.exp(-3 * percentError);
+
+  return Math.max(0, Math.min(100, Math.round(score)));
+}
+
+function submitPinpoint() {
+  const q = todayGame.pinpoint;
+  const guess = Number(document.getElementById("pinGuess").value);
+  const score = scorePinpoint(guess, q.answer);
+
+  addScore("pinpoint", score);
+
+  gameEl.innerHTML = `
+    <div class="round-label">PinPoint Result</div>
+    <h2 class="question">${score}/100</h2>
+    <p class="subtext">
+      Your guess: <strong>${guess}</strong><br />
+      Actual: <strong>${q.answer} ${q.unit}</strong>
+    </p>
+    <button onclick="nextRound()">Next Round</button>
+  `;
+}
+
+// ROUND 4: LADDER
+
+let ladderOrder = [];
+
+function renderLadder() {
+  ladderOrder = [...todayGame.ladder.items].sort(() => Math.random() - 0.5);
+  drawLadder();
+}
+
+function drawLadder() {
+  const q = todayGame.ladder;
+
+  renderRoundShell(
+    "Round 4 / 4 · Ladder · 100 pts",
+    q.prompt,
+    `
+      <p class="subtext">Move players into order from highest to lowest.</p>
+      <div id="ladderList">
+        ${ladderOrder.map((item, i) => `
+          <div class="ladder-item">
+            <strong>${i + 1}. ${item.name}</strong>
+            <div class="ladder-actions">
+              <button class="secondary" onclick="moveItem(${i}, -1)">↑</button>
+              <button class="secondary" onclick="moveItem(${i}, 1)">↓</button>
+            </div>
+          </div>
+        `).join("")}
+      </div>
+      <button onclick="submitLadder()">Submit Ladder</button>
+    `
+  );
+}
+
+function moveItem(index, direction) {
+  const newIndex = index + direction;
+  if (newIndex < 0 || newIndex >= ladderOrder.length) return;
+
+  const temp = ladderOrder[index];
+  ladderOrder[index] = ladderOrder[newIndex];
+  ladderOrder[newIndex] = temp;
+  drawLadder();
+}
+
+function scoreLadder(userOrder, correctOrder) {
+  const n = correctOrder.length;
+  let totalPairs = 0;
+  let correctPairs = 0;
+
+  const correctRank = {};
+  correctOrder.forEach((item, index) => {
+    correctRank[item.name] = index;
+  });
+
+  for (let i = 0; i < userOrder.length; i++) {
+    for (let j = i + 1; j < userOrder.length; j++) {
+      totalPairs++;
+
+      const a = userOrder[i].name;
+      const b = userOrder[j].name;
+
+      if (correctRank[a] < correctRank[b]) {
+        correctPairs++;
+      }
+    }
+  }
+
+  // Pairwise scoring is fairer than exact-position scoring.
+  // For 5 players, there are 10 pair comparisons.
+  return Math.round((correctPairs / totalPairs) * 100);
+}
+
+function submitLadder() {
+  const q = todayGame.ladder;
+  const correctOrder = [...q.items].sort((a, b) => b.value - a.value);
+  const score = scoreLadder(ladderOrder, correctOrder);
+
+  addScore("ladder", score);
+
+  gameEl.innerHTML = `
+    <div class="round-label">Ladder Result</div>
+    <h2 class="question">${score}/100</h2>
+    <p class="subtext">Correct order:</p>
+    <div class="result">
+      ${correctOrder.map((item, i) => `
+        <p><strong>${i + 1}. ${item.name}</strong> — ${item.value} ${q.statLabel}</p>
+      `).join("")}
+    </div>
+    <button onclick="nextRound()">See Final Score</button>
+  `;
+}
+
+// FINAL SCORECARD
+
+function renderFinal() {
+  const finalGrade = grade(totalScore);
+
+  const scorecard =
+`${GAME_NAME} 🗓️ #${todayGame.id}
+Total: ${totalScore}/400 — ${finalGrade}
+
+Quick Hit: ${scores.quickHit}/100 ${emoji(scores.quickHit)}
+Over/Under: ${scores.overUnder}/100 ${emoji(scores.overUnder)}
+PinPoint: ${scores.pinpoint}/100 ${emoji(scores.pinpoint)}
+Ladder: ${scores.ladder}/100 ${emoji(scores.ladder)}`;
+
+  gameEl.innerHTML = `
+    <div class="round-label">Final Score</div>
+    <h2 class="question">You scored ${totalScore}/400</h2>
+    <p class="subtext">Grade: <strong>${finalGrade}</strong></p>
+
+    <div class="scorecard" id="shareText">${scorecard}</div>
+
+    <button onclick="copyScorecard()">Copy Scorecard</button>
+    <button class="secondary" onclick="location.reload()">Play Again</button>
+  `;
+}
+
+function copyScorecard() {
+  const text = document.getElementById("shareText").innerText;
+  navigator.clipboard.writeText(text);
+  alert("Scorecard copied.");
+}
+
+render();

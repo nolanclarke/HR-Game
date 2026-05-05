@@ -1,4 +1,5 @@
 const GAME_NAME = "BoxScore";
+const SITE_URL = "boxscoregame.com";
 const START_DATE = new Date("2026-05-05");
 
 const dailyGames = [
@@ -39,6 +40,10 @@ let scores = { quickHit: 0, overUnder: 0, pinpoint: 0, ladder: 0 };
 const gameEl = document.getElementById("game");
 const scoreNowEl = document.getElementById("scoreNow");
 const rounds = ["quickHit", "overUnder", "pinpoint", "ladder"];
+
+let ouIndex = 0;
+let ouCorrect = 0;
+let ladder = [];
 
 function todayGame() {
   return dailyGames[0];
@@ -108,14 +113,12 @@ function renderQuickHit() {
 function answerQuick(choice) {
   const q = todayGame().quickHit;
   const correct = choice === q.answer;
+
   addScore("quickHit", correct ? 100 : 0);
   flashResult(correct, nextRound);
 }
 
 /* OVER / UNDER */
-
-let ouIndex = 0;
-let ouCorrect = 0;
 
 function renderOU() {
   const q = todayGame().overUnder[ouIndex];
@@ -139,13 +142,18 @@ function answerOU(choice) {
   const isCorrect = choice === correct;
 
   if (isCorrect) ouCorrect++;
+
+  const pointsPerQuestion = [33, 33, 34];
+  const pointsEarned = isCorrect ? pointsPerQuestion[ouIndex] : 0;
+
+  addScore("overUnder", scores.overUnder + pointsEarned);
+
   ouIndex++;
 
   flashResult(isCorrect, () => {
     if (ouIndex < todayGame().overUnder.length) {
       renderOU();
     } else {
-      addScore("overUnder", Math.round((ouCorrect / todayGame().overUnder.length) * 100));
       nextRound();
     }
   });
@@ -183,8 +191,6 @@ function submitPin() {
 }
 
 /* LADDER */
-
-let ladder = [];
 
 function renderLadder() {
   ladder = [...todayGame().ladder.items].sort(() => Math.random() - 0.5);
@@ -251,16 +257,6 @@ function submitLadder() {
 
 /* FINAL */
 
-function grade(s) {
-  if (s >= 370) return "A+";
-  if (s >= 340) return "A";
-  if (s >= 320) return "B+";
-  if (s >= 300) return "B";
-  if (s >= 270) return "C";
-  if (s >= 230) return "D";
-  return "F";
-}
-
 function emoji(score) {
   if (score >= 85) return "🟢";
   if (score >= 55) return "🟡";
@@ -268,20 +264,20 @@ function emoji(score) {
 }
 
 function renderFinal() {
-  const g = grade(totalScore);
-
   const text =
 `${GAME_NAME} 🗓️ #${todayGame().id}
-Total: ${totalScore}/400 — ${g}
+Total: ${totalScore}/400
 
 Quick Hit: ${scores.quickHit}/100 ${emoji(scores.quickHit)}
 Over/Under: ${scores.overUnder}/100 ${emoji(scores.overUnder)}
 PinPoint: ${scores.pinpoint}/100 ${emoji(scores.pinpoint)}
-Ladder: ${scores.ladder}/100 ${emoji(scores.ladder)}`;
+Ladder: ${scores.ladder}/100 ${emoji(scores.ladder)}
+
+${SITE_URL}`;
 
   gameEl.innerHTML = `
     <div class="round-label">Final Score</div>
-    <h2 class="question">${totalScore}/400 — ${g}</h2>
+    <h2 class="question">${totalScore}/400</h2>
     <div class="scorecard" id="shareText">${text}</div>
     <button onclick="copyScorecard()">Copy Scorecard</button>
   `;

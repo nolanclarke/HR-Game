@@ -37,6 +37,13 @@ let totalScore = 0;
 let currentRound = 0;
 let scores = { quickHit: 0, overUnder: 0, pinpoint: 0, ladder: 0 };
 
+let answers = {
+  quickHit: null,
+  overUnder: [],
+  pinpoint: null,
+  ladder: null
+};
+
 const gameEl = document.getElementById("game");
 const scoreNowEl = document.getElementById("scoreNow");
 const rounds = ["quickHit", "overUnder", "pinpoint", "ladder"];
@@ -59,6 +66,18 @@ function addScore(key, val) {
   updateScore();
 }
 
+function colorClass(score) {
+  if (score >= 85) return "green";
+  if (score >= 55) return "yellow";
+  return "red";
+}
+
+function emoji(score) {
+  if (score >= 85) return "🟢";
+  if (score >= 55) return "🟡";
+  return "🔴";
+}
+
 function renderShell(label, title, inner) {
   gameEl.innerHTML = `
     <div class="round-label">${label}</div>
@@ -67,13 +86,14 @@ function renderShell(label, title, inner) {
   `;
 }
 
-function flashResult(good, cb) {
-  gameEl.classList.remove("flash-green", "flash-red");
+function flashByScore(score, cb) {
+  const color = colorClass(score);
+  gameEl.classList.remove("flash-green", "flash-yellow", "flash-red");
   void gameEl.offsetWidth;
-  gameEl.classList.add(good ? "flash-green" : "flash-red");
+  gameEl.classList.add(`flash-${color}`);
 
   setTimeout(() => {
-    gameEl.classList.remove("flash-green", "flash-red");
+    gameEl.classList.remove("flash-green", "flash-yellow", "flash-red");
     cb();
   }, 1100);
 }
@@ -113,9 +133,17 @@ function renderQuickHit() {
 function answerQuick(choice) {
   const q = todayGame().quickHit;
   const correct = choice === q.answer;
+  const score = correct ? 100 : 0;
 
-  addScore("quickHit", correct ? 100 : 0);
-  flashResult(correct, nextRound);
+  answers.quickHit = {
+    prompt: q.prompt,
+    guess: choice,
+    correctAnswer: q.answer,
+    points: score
+  };
+
+  addScore("quickHit", score);
+  flashByScore(score, nextRound);
 }
 
 /* OVER / UNDER */
@@ -138,19 +166,28 @@ function renderOU() {
 
 function answerOU(choice) {
   const q = todayGame().overUnder[ouIndex];
-  const correct = q.actual > q.line ? "over" : "under";
-  const isCorrect = choice === correct;
+  const correctAnswer = q.actual > q.line ? "over" : "under";
+  const isCorrect = choice === correctAnswer;
 
   if (isCorrect) ouCorrect++;
 
   const pointsPerQuestion = [33, 33, 34];
   const pointsEarned = isCorrect ? pointsPerQuestion[ouIndex] : 0;
 
+  answers.overUnder.push({
+    prompt: q.prompt,
+    line: q.line,
+    guess: choice,
+    actual: q.actual,
+    correctAnswer,
+    points: pointsEarned
+  });
+
   addScore("overUnder", scores.overUnder + pointsEarned);
 
   ouIndex++;
 
-  flashResult(isCorrect, () => {
+  flashByScore(pointsEarned, () => {
     if (ouIndex < todayGame().overUnder.length) {
       renderOU();
     } else {
@@ -177,17 +214,31 @@ function renderPin() {
 
 function scorePin(guess, actual) {
   if (!guess || guess <= 0 || !actual || actual <= 0) return 0;
-  const err = Math.abs(guess - actual) / actual;
-  return Math.max(0, Math.round(100 * Math.exp(-3 * err)));
+
+  const percentError = Math.abs(guess - actual) / actual;
+  if (percentError >= 0.5) return 0;
+
+  return Math.max(
+    0,
+    Math.round(100 * (1 - Math.pow(percentError / 0.5, 0.7)))
+  );
 }
 
 function submitPin() {
+  const q = todayGame().pinpoint;
   const guess = Number(document.getElementById("guess").value);
-  const actual = todayGame().pinpoint.answer;
-  const score = scorePin(guess, actual);
+  const score = scorePin(guess, q.answer);
+
+  answers.pinpoint = {
+    prompt: q.prompt,
+    guess,
+    correctAnswer: q.answer,
+    unit: q.unit,
+    points: score
+  };
 
   addScore("pinpoint", score);
-  flashResult(score >= 70, nextRound);
+  flashByScore(score, nextRound);
 }
 
 /* LADDER */
@@ -251,21 +302,21 @@ function submitLadder() {
   const correct = [...todayGame().ladder.items].sort((a, b) => b.value - a.value);
   const score = scoreLadder(ladder, correct);
 
+  answers.ladder = {
+    prompt: todayGame().ladder.prompt,
+    guess: [...ladder],
+    correctAnswer: correct,
+    points: score
+  };
+
   addScore("ladder", score);
-  flashResult(score >= 70, renderFinal);
+  flashByScore(score, renderFinal);
 }
 
-/* FINAL */
+/* FINAL + ANSWERS */
 
-function emoji(score) {
-  if (score >= 85) return "🟢";
-  if (score >= 55) return "🟡";
-  return "🔴";
-}
-
-function renderFinal() {
-  const text =
-`${GAME_NAME} 🗓️ #${todayGame().id}
+function buildScorecardText() {
+  return `${GAME_NAME} 🗓️ #${todayGame().id}
 Total: ${totalScore}/400
 
 Quick Hit: ${scores.quickHit}/100 ${emoji(scores.quickHit)}
@@ -274,12 +325,65 @@ PinPoint: ${scores.pinpoint}/100 ${emoji(scores.pinpoint)}
 Ladder: ${scores.ladder}/100 ${emoji(scores.ladder)}
 
 ${SITE_URL}`;
+}
+
+function renderFinal() {
+  const text = buildScorecardText();
 
   gameEl.innerHTML = `
     <div class="round-label">Final Score</div>
     <h2 class="question">${totalScore}/400</h2>
     <div class="scorecard" id="shareText">${text}</div>
     <button onclick="copyScorecard()">Copy Scorecard</button>
+    <button class="secondary" onclick="renderAnswers()">See Answers</button>
+  `;
+}
+
+function renderAnswers() {
+  const ouCards = answers.overUnder.map((a, i) => `
+    <div class="answer-card">
+      <div class="answer-title">Over/Under ${i + 1}</div>
+      <p class="answer-row">${a.prompt}</p>
+      <p class="answer-row">Line: <strong>${a.line}</strong></p>
+      <p class="answer-row">Your pick: <strong>${a.guess}</strong></p>
+      <p class="answer-row">Actual: <strong>${a.actual}</strong> (${a.correctAnswer})</p>
+      <p class="answer-points ${colorClass(a.points) + "-text"}">${a.points} pts</p>
+    </div>
+  `).join("");
+
+  const ladderGuess = answers.ladder.guess.map((p, i) => `${i + 1}. ${p.name}`).join("<br>");
+  const ladderCorrect = answers.ladder.correctAnswer.map((p, i) => `${i + 1}. ${p.name} — ${p.value}`).join("<br>");
+
+  gameEl.innerHTML = `
+    <div class="round-label">Answer Review</div>
+    <h2 class="question">How you scored</h2>
+
+    <div class="answer-card">
+      <div class="answer-title">Quick Hit</div>
+      <p class="answer-row">${answers.quickHit.prompt}</p>
+      <p class="answer-row">Your answer: <strong>${answers.quickHit.guess}</strong></p>
+      <p class="answer-row">Correct answer: <strong>${answers.quickHit.correctAnswer}</strong></p>
+      <p class="answer-points ${colorClass(answers.quickHit.points) + "-text"}">${answers.quickHit.points} pts</p>
+    </div>
+
+    ${ouCards}
+
+    <div class="answer-card">
+      <div class="answer-title">PinPoint</div>
+      <p class="answer-row">${answers.pinpoint.prompt}</p>
+      <p class="answer-row">Your guess: <strong>${answers.pinpoint.guess}</strong></p>
+      <p class="answer-row">Correct answer: <strong>${answers.pinpoint.correctAnswer} ${answers.pinpoint.unit}</strong></p>
+      <p class="answer-points ${colorClass(answers.pinpoint.points) + "-text"}">${answers.pinpoint.points} pts</p>
+    </div>
+
+    <div class="answer-card">
+      <div class="answer-title">Ladder</div>
+      <p class="answer-row"><strong>Your order:</strong><br>${ladderGuess}</p>
+      <p class="answer-row"><strong>Correct order:</strong><br>${ladderCorrect}</p>
+      <p class="answer-points ${colorClass(answers.ladder.points) + "-text"}">${answers.ladder.points} pts</p>
+    </div>
+
+    <button onclick="renderFinal()">Back to Scorecard</button>
   `;
 }
 

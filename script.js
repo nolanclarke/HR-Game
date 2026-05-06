@@ -12,8 +12,8 @@ const dailyGames = [
     },
     overUnder: [
       { prompt: "Derrick Rose career points", line: 12500, actual: 12573 },
-      { prompt: "Mike Trout career WAR", line: 85, actual: 86.2 },
-      { prompt: "Patrick Mahomes playoff wins", line: 14, actual: 17 }
+      { prompt: "Mike Trout career WAR", line: 85, actual: 85.2 },
+      { prompt: "Patrick Mahomes playoff wins", line: 14, actual: 15 }
     ],
     pinpoint: {
       prompt: "Ryan Howard career home runs",
@@ -21,13 +21,129 @@ const dailyGames = [
       unit: "HR"
     },
     ladder: {
-      prompt: "Rank by career PPG, highest to lowest.",
+      prompt: "Rank by career NBA PPG, highest to lowest.",
       items: [
-        { name: "Kevin Durant", value: 27.1 },
-        { name: "LeBron James", value: 26.8 },
+        { name: "Kevin Durant", value: 27.3 },
+        { name: "LeBron James", value: 27.2 },
         { name: "Allen Iverson", value: 26.7 },
         { name: "Kobe Bryant", value: 25.0 },
         { name: "Stephen Curry", value: 24.8 }
+      ]
+    }
+  },
+
+  {
+    id: 2,
+    quickHit: {
+      prompt: "Did Peyton Manning win a Super Bowl with the Broncos?",
+      options: ["Yes", "No"],
+      answer: "Yes"
+    },
+    overUnder: [
+      { prompt: "Aaron Judge career home runs (through 2023)", line: 250, actual: 257 },
+      { prompt: "Tom Brady career regular season wins", line: 250, actual: 251 },
+      { prompt: "Sidney Crosby career points", line: 1500, actual: 1596 }
+    ],
+    pinpoint: {
+      prompt: "Calvin Johnson career receiving yards",
+      answer: 11619,
+      unit: "yards"
+    },
+    ladder: {
+      prompt: "Rank by career MLB home runs, highest to lowest.",
+      items: [
+        { name: "Albert Pujols", value: 703 },
+        { name: "Ken Griffey Jr.", value: 630 },
+        { name: "Jim Thome", value: 612 },
+        { name: "Frank Thomas", value: 521 },
+        { name: "David Ortiz", value: 541 }
+      ]
+    }
+  },
+
+  {
+    id: 3,
+    quickHit: {
+      prompt: "Did Kevin Durant ever play for the Boston Celtics?",
+      options: ["Yes", "No"],
+      answer: "No"
+    },
+    overUnder: [
+      { prompt: "Stephen Curry career 3-pointers", line: 3500, actual: 3747 },
+      { prompt: "Derek Jeter career hits", line: 3400, actual: 3465 },
+      { prompt: "LeBron James career assists", line: 10000, actual: 10420 }
+    ],
+    pinpoint: {
+      prompt: "Shaquille O'Neal career points",
+      answer: 28596,
+      unit: "points"
+    },
+    ladder: {
+      prompt: "Rank by NFL career rushing yards, highest to lowest.",
+      items: [
+        { name: "Emmitt Smith", value: 18355 },
+        { name: "Walter Payton", value: 16726 },
+        { name: "Barry Sanders", value: 15269 },
+        { name: "Adrian Peterson", value: 14918 },
+        { name: "LaDainian Tomlinson", value: 13684 }
+      ]
+    }
+  },
+
+  {
+    id: 4,
+    quickHit: {
+      prompt: "Did Kobe Bryant win an MVP award?",
+      options: ["Yes", "No"],
+      answer: "Yes"
+    },
+    overUnder: [
+      { prompt: "Alex Ovechkin career goals", line: 800, actual: 853 },
+      { prompt: "Tiger Woods PGA Tour wins", line: 80, actual: 82 },
+      { prompt: "Clayton Kershaw career strikeouts", line: 3000, actual: 2968 }
+    ],
+    pinpoint: {
+      prompt: "Barry Bonds career home runs",
+      answer: 762,
+      unit: "HR"
+    },
+    ladder: {
+      prompt: "Rank by NBA career points, highest to lowest.",
+      items: [
+        { name: "LeBron James", value: 40000 },
+        { name: "Kareem Abdul-Jabbar", value: 38387 },
+        { name: "Karl Malone", value: 36928 },
+        { name: "Kobe Bryant", value: 33643 },
+        { name: "Michael Jordan", value: 32292 }
+      ]
+    }
+  },
+
+  {
+    id: 5,
+    quickHit: {
+      prompt: "Did Lionel Messi ever play in the Premier League?",
+      options: ["Yes", "No"],
+      answer: "No"
+    },
+    overUnder: [
+      { prompt: "Cristiano Ronaldo career goals (club + country)", line: 850, actual: 850 },
+      { prompt: "Wayne Gretzky career points", line: 2800, actual: 2857 },
+      { prompt: "Patrick Kane career goals", line: 450, actual: 471 }
+    ],
+    pinpoint: {
+      prompt: "Michael Jordan career points",
+      answer: 32292,
+      unit: "points"
+    },
+    ladder: {
+      prompt: "Rank by career NFL passing yards, highest to lowest.",
+      items: [
+        { name: "Tom Brady", value: 89214 },
+        { name: "Drew Brees", value: 80358 },
+        { name: "Peyton Manning", value: 71940 },
+        { name: "Brett Favre", value: 71838 },
+        { name: "Aaron Rodgers", value: 59955 }
       ]
     }
   }

@@ -1,6 +1,6 @@
 const GAME_NAME = "BoxScore";
 const SITE_URL = "boxscoregame.com";
-const START_DATE = new Date("2026-05-05");
+const START_DATE = "2026-05-05";
 
 const dailyGames = [
   {
@@ -12,8 +12,8 @@ const dailyGames = [
     },
     overUnder: [
       { prompt: "Derrick Rose career points", line: 12500, actual: 12573 },
-      { prompt: "Mike Trout career WAR", line: 85, actual: 85.2 },
-      { prompt: "Patrick Mahomes playoff wins", line: 14, actual: 15 }
+      { prompt: "Barry Bonds career home runs", line: 750, actual: 762 },
+      { prompt: "Tom Brady Super Bowl wins", line: 6.5, actual: 7 }
     ],
     pinpoint: {
       prompt: "Ryan Howard career home runs",
@@ -21,17 +21,16 @@ const dailyGames = [
       unit: "HR"
     },
     ladder: {
-      prompt: "Rank by career NBA PPG, highest to lowest.",
+      prompt: "Rank by NBA career PPG, highest to lowest.",
       items: [
         { name: "Kevin Durant", value: 27.3 },
-        { name: "LeBron James", value: 27.2 },
+        { name: "LeBron James", value: 27.1 },
         { name: "Allen Iverson", value: 26.7 },
         { name: "Kobe Bryant", value: 25.0 },
         { name: "Stephen Curry", value: 24.8 }
       ]
     }
   },
-
   {
     id: 2,
     quickHit: {
@@ -40,27 +39,26 @@ const dailyGames = [
       answer: "Yes"
     },
     overUnder: [
-      { prompt: "Aaron Judge career home runs (through 2023)", line: 250, actual: 257 },
-      { prompt: "Tom Brady career regular season wins", line: 250, actual: 251 },
-      { prompt: "Sidney Crosby career points", line: 1500, actual: 1596 }
+      { prompt: "Calvin Johnson career receiving yards", line: 12000, actual: 11619 },
+      { prompt: "Shaquille O'Neal career points", line: 29000, actual: 28596 },
+      { prompt: "Derek Jeter career hits", line: 3400, actual: 3465 }
     ],
     pinpoint: {
-      prompt: "Calvin Johnson career receiving yards",
-      answer: 11619,
-      unit: "yards"
+      prompt: "Michael Jordan career points",
+      answer: 32292,
+      unit: "points"
     },
     ladder: {
-      prompt: "Rank by career MLB home runs, highest to lowest.",
+      prompt: "Rank by MLB career home runs, highest to lowest.",
       items: [
         { name: "Albert Pujols", value: 703 },
         { name: "Ken Griffey Jr.", value: 630 },
         { name: "Jim Thome", value: 612 },
-        { name: "Frank Thomas", value: 521 },
-        { name: "David Ortiz", value: 541 }
+        { name: "David Ortiz", value: 541 },
+        { name: "Frank Thomas", value: 521 }
       ]
     }
   },
-
   {
     id: 3,
     quickHit: {
@@ -69,14 +67,14 @@ const dailyGames = [
       answer: "No"
     },
     overUnder: [
-      { prompt: "Stephen Curry career 3-pointers", line: 3500, actual: 3747 },
-      { prompt: "Derek Jeter career hits", line: 3400, actual: 3465 },
-      { prompt: "LeBron James career assists", line: 10000, actual: 10420 }
+      { prompt: "Wayne Gretzky career points", line: 2800, actual: 2857 },
+      { prompt: "Tiger Woods PGA Tour wins", line: 80, actual: 82 },
+      { prompt: "Kobe Bryant career points", line: 33000, actual: 33643 }
     ],
     pinpoint: {
-      prompt: "Shaquille O'Neal career points",
-      answer: 28596,
-      unit: "points"
+      prompt: "Barry Bonds career home runs",
+      answer: 762,
+      unit: "HR"
     },
     ladder: {
       prompt: "Rank by NFL career rushing yards, highest to lowest.",
@@ -89,23 +87,22 @@ const dailyGames = [
       ]
     }
   },
-
   {
     id: 4,
     quickHit: {
-      prompt: "Did Kobe Bryant win an MVP award?",
+      prompt: "Did Kobe Bryant win a regular season MVP?",
       options: ["Yes", "No"],
       answer: "Yes"
     },
     overUnder: [
-      { prompt: "Alex Ovechkin career goals", line: 800, actual: 853 },
-      { prompt: "Tiger Woods PGA Tour wins", line: 80, actual: 82 },
-      { prompt: "Clayton Kershaw career strikeouts", line: 3000, actual: 2968 }
+      { prompt: "Brett Favre career passing yards", line: 72000, actual: 71838 },
+      { prompt: "Alex Rodriguez career home runs", line: 700, actual: 696 },
+      { prompt: "Kareem Abdul-Jabbar career points", line: 39000, actual: 38387 }
     ],
     pinpoint: {
-      prompt: "Barry Bonds career home runs",
-      answer: 762,
-      unit: "HR"
+      prompt: "Jerry Rice career receiving yards",
+      answer: 22895,
+      unit: "yards"
     },
     ladder: {
       prompt: "Rank by NBA career points, highest to lowest.",
@@ -118,7 +115,6 @@ const dailyGames = [
       ]
     }
   },
-
   {
     id: 5,
     quickHit: {
@@ -127,23 +123,23 @@ const dailyGames = [
       answer: "No"
     },
     overUnder: [
-      { prompt: "Cristiano Ronaldo career goals (club + country)", line: 850, actual: 850 },
-      { prompt: "Wayne Gretzky career points", line: 2800, actual: 2857 },
-      { prompt: "Patrick Kane career goals", line: 450, actual: 471 }
+      { prompt: "Peyton Manning career passing touchdowns", line: 550, actual: 539 },
+      { prompt: "Hank Aaron career home runs", line: 750, actual: 755 },
+      { prompt: "Michael Jordan career rebounds", line: 6500, actual: 6672 }
     ],
     pinpoint: {
-      prompt: "Michael Jordan career points",
-      answer: 32292,
+      prompt: "Wayne Gretzky career NHL points",
+      answer: 2857,
       unit: "points"
     },
     ladder: {
-      prompt: "Rank by career NFL passing yards, highest to lowest.",
+      prompt: "Rank by NFL career passing yards, highest to lowest.",
       items: [
         { name: "Tom Brady", value: 89214 },
         { name: "Drew Brees", value: 80358 },
         { name: "Peyton Manning", value: 71940 },
         { name: "Brett Favre", value: 71838 },
-        { name: "Aaron Rodgers", value: 59955 }
+        { name: "Dan Marino", value: 61361 }
       ]
     }
   }
@@ -160,6 +156,8 @@ let answers = {
   ladder: null
 };
 
+let isLocked = false;
+
 const gameEl = document.getElementById("game");
 const scoreNowEl = document.getElementById("scoreNow");
 const rounds = ["quickHit", "overUnder", "pinpoint", "ladder"];
@@ -167,8 +165,26 @@ const rounds = ["quickHit", "overUnder", "pinpoint", "ladder"];
 let ouIndex = 0;
 let ladder = [];
 
+function localDateOnly(dateString) {
+  const [year, month, day] = dateString.split("-").map(Number);
+  return new Date(year, month - 1, day);
+}
+
+function getTodayGame() {
+  const start = localDateOnly(START_DATE);
+  const now = new Date();
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
+  const diffDays = Math.floor((today - start) / (1000 * 60 * 60 * 24));
+  const index = ((diffDays % dailyGames.length) + dailyGames.length) % dailyGames.length;
+
+  return dailyGames[index];
+}
+
+const activeGame = getTodayGame();
+
 function todayGame() {
-  return dailyGames[0];
+  return activeGame;
 }
 
 function updateScore() {
@@ -212,6 +228,7 @@ function flashColor(color, cb) {
 
   setTimeout(() => {
     gameEl.classList.remove("flash-green", "flash-yellow", "flash-red");
+    isLocked = false;
     cb();
   }, 1100);
 }
@@ -253,6 +270,9 @@ function renderQuickHit() {
 }
 
 function answerQuick(choice) {
+  if (isLocked) return;
+  isLocked = true;
+
   const q = todayGame().quickHit;
   const correct = choice === q.answer;
   const score = correct ? 100 : 0;
@@ -288,6 +308,9 @@ function renderOU() {
 }
 
 function answerOU(choice) {
+  if (isLocked) return;
+  isLocked = true;
+
   const q = todayGame().overUnder[ouIndex];
   const correctAnswer = q.actual > q.line ? "over" : "under";
   const isCorrect = choice === correctAnswer;
@@ -347,6 +370,9 @@ function scorePin(guess, actual) {
 }
 
 function submitPin() {
+  if (isLocked) return;
+  isLocked = true;
+
   const q = todayGame().pinpoint;
   const guess = Number(document.getElementById("guess").value);
   const score = scorePin(guess, q.answer);
@@ -395,6 +421,8 @@ function drawLadder() {
 }
 
 function move(i, d) {
+  if (isLocked) return;
+
   const j = i + d;
   if (j < 0 || j >= ladder.length) return;
   [ladder[i], ladder[j]] = [ladder[j], ladder[i]];
@@ -421,6 +449,9 @@ function scoreLadder(userOrder, correctOrder) {
 }
 
 function submitLadder() {
+  if (isLocked) return;
+  isLocked = true;
+
   const correct = [...todayGame().ladder.items].sort((a, b) => b.value - a.value);
   const score = scoreLadder(ladder, correct);
 
